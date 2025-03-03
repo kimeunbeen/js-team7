@@ -1,9 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>G-DRAGON - Spotify Clone</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: white;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background: #181818;
+      }
+      .navbar input {
+        flex: 1;
+        padding: 8px;
+        border-radius: 20px;
+        border: none;
+      }
+      .navbar button {
+        background: none;
+        border: none;
+        color: white;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+      .artist-info {
+        text-align: center;
+        padding: 50px;
+        background: linear-gradient(to bottom, #ff7300, #181818);
+      }
+      .artist-banner img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+      .popular-songs ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px;
+      }
+      .popular-songs li {
+        padding: 10px;
+        border-bottom: 1px solid #333;
+      }
+      .recommended {
+        text-align: center;
+        margin: 20px;
+      }
+      .album img {
+        width: 150px;
+        border-radius: 10px;
+      }
+      .player-bar {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: #181818;
+        text-align: center;
+        padding: 10px;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div class="navbar">
+        <input type="text" placeholder="어떤 콘텐츠를 감상하고 싶으세요?" />
+        <button class="premium">Premium 둘러보기</button>
+        <button class="install">앱 설치하기</button>
+        <button class="notifications">🔔</button>
+        <div class="user-icon">🟠</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="artist-info">
+        <div class="artist-banner">
+          <img src="artist-banner.jpg" alt="G-DRAGON" />
+          <h1>G-DRAGON</h1>
+          <p>월별 리스너 <strong>4,663,542명</strong></p>
+          <button class="follow">팔로우하기</button>
+        </div>
+      </section>
+
+      <section class="popular-songs">
+        <h2>인기</h2>
+        <ul>
+          <li>1. HOME SWEET HOME (feat. 태양, 대성) - 54,005,616회 - 3:31</li>
+          <li>2. PO#WER - 43,061,398회 - 2:23</li>
+          <li>3. TOO BAD (feat. Anderson .Paak) - 3,176,830회 - 2:33</li>
+          <li>4. 삐딱하게 (Crooked) - 84,992,409회 - 3:44</li>
+        </ul>
+      </section>
+
+      <section class="recommended">
+        <h2>아티스트 추천</h2>
+        <div class="album">
+          <img src="ubermensch-album.jpg" alt="Übermensch 앨범" />
+          <p>Übermensch - GD 3rd Album</p>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
