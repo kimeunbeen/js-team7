@@ -1,92 +1,108 @@
-/* 기본 스타일 */
 body {
   background-color: #121212;
   color: white;
   font-family: Arial, sans-serif;
-  padding: 10px 200px;
+  padding: 10px 170px;
   text-align: center;
+  overflow-x: hidden;
 }
 
-
-
-/* 인기 아티스트 및 앨범 섹션 스타일 */
 .popular-artists, .popular-albums {
   display: flex;
-  flex-direction: column; /* 제목을 위로 배치 */
+  flex-direction: column;
   gap: 10px;
   margin-bottom: 30px;
 }
 
-.title1{
+h2 {
   display: flex;
   justify-content: flex-start;
-}
-
-/* 제목 스타일 */
-h2 {
   font-size: 1.8em;
-  margin-bottom: 15px;
-  text-align: center;
+  margin-bottom: 15px
 }
 
-/* 리스트 컨테이너 */
+/* 가로 스크롤을 위한 스타일 */
 .artist-list, .album-list {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+  display: flex; /* 가로 정렬 유지 */
+  flex-wrap: nowrap; /* 한 줄 유지 (슬라이드) */
+  gap: 8px;
   width: 100%;
-  position: relative;
+  overflow-x: auto; /* 가로 스크롤 활성화 */
+  scroll-snap-type: x mandatory; /* 부드러운 스크롤 */
+  scrollbar-width: none;
+  padding: 10px;
 }
 
-/* 아티스트 및 앨범 개별 아이템 */
+/* 스크롤바 숨기기 */
+.artist-list::-webkit-scrollbar, .album-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* 개별 아이템 크기 고정 */
 .artist, .album {
+  flex: 0 0 calc(100% / 6); 
+  height: 250px; 
   text-align: center;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* 이미지 스타일 */
+/* 아티스트 이미지는 원형 */
 .artist img {
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.album img{
-  width: 150px;
-  height: 150px;
+/* 앨범 이미지는 정사각형 */
+.album img {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-.artist p, .album p {
-  margin-top: 10px;
-  font-size: 14px;
+/* 반응형 설정: 화면 작아질 때 크기 조정 */
+
+/* 440px 이하에서는 2개만 보이도록 설정 */
+@media screen and (max-width: 440px) {
+  .artist, .album {
+    flex: 0 0 calc(100% / 2); /* 2개 보이게 설정 */
+  }
+  .artist-list, .album-list {
+    justify-content: space-between; 
+  }
+  body {
+    padding: 10px; 
+  }
 }
 
-/* 좌우 버튼 스타일 */
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  font-size: 24px;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+@media screen and (max-width: 1181px) {
+  .artist, .album {
+    flex: 0 0 calc(100% / 4); 
+  }
+  .artist-list, .album-list {
+    justify-content: space-between; 
+  }
+  body {
+    padding: 20px;
+  }
 }
 
-.nav-btn:hover {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-/* 왼쪽 버튼 */
-.left-btn {
-  background-color: #121212;
-}
-
-/* 오른쪽 버튼 */
-.right-btn {
-  right: -40px;
+@media screen and (max-width: 1368px) {
+  .artist, .album {
+    flex: 0 0 calc(100% / 5); /* 5개 보이게 설정 */
+  }
+  .artist-list, .album-list {
+    justify-content: space-between;
+  }
+  body {
+    padding: 1px;
+  }
 }
 
 
