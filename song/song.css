@@ -49,12 +49,47 @@
     padding: 1em;
 }
 
-.song-category{
+.song-category {
     display: flex;
     padding: 1em;
+    overflow-x: scroll;
+    white-space: nowrap;
 }
 
-.song-category button{
-    margin: 1em;
+.song-category button {
+    margin: 0.3em;
+    border: none;
+    background-color: rgb(36, 36, 36);
+    color: white;
+    border-radius: 6px;
+    height: 28px;
+    width: auto;
+}
+
+.song-category::-webkit-scrollbar {
+    height: 12px;
+}
+
+.song-category::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.952);
+}
+
+.song-category::-webkit-scrollbar-track {
+    background-color: black; 
+}
+
+.song-category::-webkit-scrollbar-button {
+    display: block;
+    width: 10px;
+    background-color: black;
+}
+
+
+.down-bar {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100%;
+    height: 50px;
 }
 
