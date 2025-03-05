@@ -2,7 +2,7 @@ body {
   background-color: #121212;
   color: white;
   font-family: Arial, sans-serif;
-  padding: 10px 170px;
+  padding: 10px 50px;
   text-align: center;
   overflow-x: hidden;
 }
@@ -33,6 +33,8 @@ h2 {
   padding: 10px;
 }
 
+
+
 /* 스크롤바 숨기기 */
 .artist-list::-webkit-scrollbar, .album-list::-webkit-scrollbar {
   display: none;
@@ -40,14 +42,36 @@ h2 {
 
 /* 개별 아이템 크기 고정 */
 .artist, .album {
-  flex: 0 0 calc(100% / 6); 
+  flex: 0 0 calc(100% / 8); 
   height: 250px; 
   text-align: center;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.artist_name {
+  font-size: 18px; /* 글자 크기 키우기 */
+  font-weight: bold;
+  color: white;
+  margin-top: 50px; /* 이미지와 간격 조정 */
+}
+
+.album_name{
+  font-size: 18px; /* 글자 크기 키우기 */
+  font-weight: bold;
+  color: white;
+  padding-top:50px;
+  text-align: left;
+}
+
+.album_artist {
+  font-size: 14px;
+  color: gray; /* 아티스트 이름을 앨범보다 강조 덜 되게 */
+  text-align: center;
+  margin-top: 5px;
 }
 
 /* 아티스트 이미지는 원형 */
@@ -66,18 +90,28 @@ h2 {
   object-fit: cover;
 }
 
+.album p {
+  max-width: 180px;
+  word-wrap: break-word;
+  white-space: normal;
+  text-align: center;
+  margin-top: 5px;
+  line-height: 1.2;
+}
+
 /* 반응형 설정: 화면 작아질 때 크기 조정 */
 
 /* 440px 이하에서는 2개만 보이도록 설정 */
-@media screen and (max-width: 440px) {
+
+@media screen and (max-width: 1368px) {
   .artist, .album {
-    flex: 0 0 calc(100% / 2); /* 2개 보이게 설정 */
+    flex: 0 0 calc(100% / 5); /* 5개 보이게 설정 */
   }
   .artist-list, .album-list {
-    justify-content: space-between; 
+    justify-content: space-between;
   }
   body {
-    padding: 10px; 
+    padding: 1px;
   }
 }
 
@@ -93,15 +127,17 @@ h2 {
   }
 }
 
-@media screen and (max-width: 1368px) {
+
+
+@media screen and (max-width: 430px) {
   .artist, .album {
-    flex: 0 0 calc(100% / 5); /* 5개 보이게 설정 */
+    flex: 0 0 calc(100% / 2); /* 2개 보이게 설정 */
   }
   .artist-list, .album-list {
-    justify-content: space-between;
+    justify-content: space-between; 
   }
   body {
-    padding: 1px;
+    padding: 10px; 
   }
 }
 
