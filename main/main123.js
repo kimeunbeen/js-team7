@@ -4,6 +4,8 @@ const CLIENT_SECRET = "fd23b19e7af64e92b5e2c85c975df942"; // 여기에 Client Se
 // Base64 인코딩
 const encodedCredentials = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
 
+// const params = new URLSearchParams(window.location.search);
+// const artistId = params.get("id");
 
 // 🔑 Access Token 요청
 const getAccessToken = async () => {
@@ -20,11 +22,28 @@ const getAccessToken = async () => {
   return data.access_token;
 };
 
+// const fetchArtistDetail = async () => {
+//   const token = await getAccessToken();
+
+//   const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
+//       method: "GET",
+//       headers: {
+//           "Authorization": `Bearer ${token}`
+//       }
+//   });
+
+//   const data = await response.json();
+//   console.log("🎵 아티스트 상세 정보:", data);
+
+//   document.getElementById("artist-name").textContent = data.name;
+//   document.getElementById("artist-image").src = data.images[0].url;
+//   document.getElementById("artist-genres").textContent = data.genres.join(", ");
+//   document.getElementById("artist-followers").textContent = `팔로워: ${data.followers.total.toLocaleString()}명`;
+// };
 
 
 
-
-// 🎤 [1] 인기 아티스트 가져오기 (최대 10개)
+// [1] 인기 아티스트 가져오기 (최대 10개)
 const fetchSpotifyArtists = async () => {
   const token = await getAccessToken();
 
@@ -36,12 +55,12 @@ const fetchSpotifyArtists = async () => {
   });
 
   const data = await response.json();
-  console.log("🎤 인기 아티스트 데이터:", data);
+  console.log(" 인기 아티스트 데이터:", data);
 
   if (data && data.artists) {
       renderArtists(data.artists);
   } else {
-      console.error("❌ 아티스트 데이터 없음:", data);
+      console.error(" 아티스트 데이터 없음:", data);
   }
 };
 
@@ -58,6 +77,14 @@ const renderArtists = (artists) => {
   `).join('');
 
   artistContainer.innerHTML = artistHTML;
+
+  // 클릭 이벤트 추가 (아티스트 클릭 시 상세 페이지로 이동)
+  document.querySelectorAll(".artist").forEach(artistElement => {
+    artistElement.addEventListener("click", () => {
+        const artistId = artistElement.getAttribute("data-id");
+        window.location.href = `artist-detail.html?id=${artistId}`; // 상세 페이지로 이동
+    });
+  });
 };
 
 // 🎵 [2] 최신 앨범 가져오기
@@ -77,7 +104,7 @@ const fetchSpotifyAlbums = async () => {
   if (data && data.albums && data.albums.items) {
       renderAlbums(data.albums.items);
   } else {
-      console.error("❌ 앨범 데이터 없음:", data);
+      console.error("앨범 데이터 없음:", data);
   }
 };
 
@@ -103,4 +130,5 @@ const renderAlbums = (albums) => {
 
 fetchSpotifyArtists();
 fetchSpotifyAlbums();
+// fetchArtistDetail();
 

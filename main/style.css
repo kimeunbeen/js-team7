@@ -7,6 +7,10 @@ body {
   overflow-x: hidden;
 }
 
+.search-nav {
+  display: none;
+}
+
 .popular-artists, .popular-albums {
   display: flex;
   flex-direction: column;
@@ -18,6 +22,7 @@ h2 {
   display: flex;
   justify-content: flex-start;
   font-size: 1.8em;
+  margin-top:15px;
   margin-bottom: 15px
 }
 
@@ -43,8 +48,7 @@ h2 {
 /* 개별 아이템 크기 고정 */
 .artist, .album {
   flex: 0 0 calc(100% / 8); 
-  height: 250px; 
-  text-align: center;
+  text-align: left;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
@@ -57,6 +61,7 @@ h2 {
   font-weight: bold;
   color: white;
   margin-top: 50px; /* 이미지와 간격 조정 */
+  text-align: left;
 }
 
 .album_name{
@@ -70,8 +75,8 @@ h2 {
 .album_artist {
   font-size: 14px;
   color: gray; /* 아티스트 이름을 앨범보다 강조 덜 되게 */
-  text-align: center;
   margin-top: 5px;
+  text-align: left;
 }
 
 /* 아티스트 이미지는 원형 */
@@ -97,13 +102,62 @@ h2 {
   text-align: center;
   margin-top: 5px;
   line-height: 1.2;
+  text-align: left;
 }
 
-/* 반응형 설정: 화면 작아질 때 크기 조정 */
 
-/* 440px 이하에서는 2개만 보이도록 설정 */
 
 @media screen and (max-width: 1368px) {
+  .search-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #121212;
+    padding: 15px 20px;
+    color: white;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .status-icon {
+    width: 40px; /* 이미지 크기 조절 */
+    height: 40px;
+    border-radius: 50%; /* 원형 유지 */
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  /* 검색창 스타일 */
+  .search-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    width: 60%;
+  }
+
+  .search-box i {
+    color: black;
+    margin-right: 10px;
+  }
+
+  .search-box input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  /* 오른쪽 카메라 아이콘 */
   .artist, .album {
     flex: 0 0 calc(100% / 5); /* 5개 보이게 설정 */
   }
@@ -116,6 +170,14 @@ h2 {
 }
 
 @media screen and (max-width: 1181px) {
+  .search-box {
+    width: 70%;
+  }
+  .title {
+    font-size: 18px;
+    align-items: center;
+  }
+
   .artist, .album {
     flex: 0 0 calc(100% / 4); 
   }
@@ -128,8 +190,37 @@ h2 {
 }
 
 
-
 @media screen and (max-width: 430px) {
+  .search-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 1px;
+    height: 60px;
+  }
+  .search-box {
+    width: 90%;
+  }
+  .left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 16px;
+    line-height: 40px; 
+    align-items: center;
+    height: 100%;
+  }
+  .search-box{
+    width: 100%;
+  }
+
   .artist, .album {
     flex: 0 0 calc(100% / 2); /* 2개 보이게 설정 */
   }

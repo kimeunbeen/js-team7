@@ -9,19 +9,27 @@
   </head>
 
   <body>
+    <nav class="search-nav">
+      <div class="left">
+          <img src="image/profile.png" alt="상 아이콘" class="status-icon">
+          <span class="title">검색</span>
+      </div>
+      <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="어떤 것을 듣고 싶으세요?" />
+      </div>
+  </nav>
+
   <main>
-  
     <section class="popular-artists">
       <h2 class="title1">인기 아티스트</h2>
       <div id="artist-container" class="artist-list d-flex flex-nowrap overflow-auto"></div>
     </section>
-    
 
     <section class="popular-albums">
     <h2 class="title1">최신앨범</h2>
     <div id="album-container" class="artist-list d-flex flex-nowrap overflow-auto"></div>
     </section>
-  
   </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
