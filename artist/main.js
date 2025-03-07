@@ -50,7 +50,7 @@ const searchArtistID = async (artistName) => {
 // artistID로 아티스트 트랙 검색
 const searchArtistInfo = async (artistID) => {
   const token = await getAccessToken();
-  const url = `https://api.spotify.com/v1/artists/${artistID}/top-tracks?market=KR`;
+  const url = `https://api.spotify.com/v1/artists/${artistID}/top-tracks?market=us`;
 
   const response = await fetch(url, {
     method: "GET",
@@ -113,7 +113,7 @@ const artistAlbumList = async (artistID) => {
   container.innerHTML = ""; // 기존 앨범 초기화
 
   while (hasMoreAlbums) {
-    const url = `https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album&market=kr&limit=${limit}&offset=${offset}`;
+    const url = `https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album&market=us&limit=${limit}&offset=${offset}`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
