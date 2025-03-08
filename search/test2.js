@@ -63,7 +63,7 @@ const searchArtistInfo = async (artistID) => {
 /* API 연계 END */
 
 // G-DRAGON 검색
-searchArtistID("G-DRAGON");
+searchArtistID();
 
 // 렌더링
 const render = () => {

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script
+      src="https://kit.fontawesome.com/219d5a838e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./search.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header class="header">
+        <h1>nav</h1>
+        <!-- <button class="follow-btn">팔로우</button> -->
+      </header>
+
+      <div class="sticky-header">
+        <div class="play-btn"><img src="img/play.png" /></div>
+        <div id="sticky-header-info">
+          <div></div>
+        </div>
+      </div>
+
+      <div id="main-area">
+        <div class="main-area-content"></div>
+        <div id="artist-info"><div></div></div>
+      </div>
+
+      <div class="main-play">
+        <div class="play-btn"><img src="img/play.png" /></div>
+        <button>팔로우하기</button>
+      </div>
+      <section class="popular">
+        <h2>인기</h2>
+        <div id="track-list"></div>
+      </section>
+
+      <section class="album">
+        <h2>앨범</h2>
+        <div id="album-container"></div>
+      </section>
+
+      <section class="featured">
+        <h2>참여앨범</h2>
+        <div id="featured-container"></div>
+      </section>
+    </section>
+    <script src="./search.js"></script>
+  </body>
+</html>
