@@ -8,7 +8,6 @@ body {
   background-color: #121212;
   color: white;
   overflow-x: hidden;
-  padding: 8px;
 }
 .header {
   display: flex;
