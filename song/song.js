@@ -10,7 +10,7 @@ const underLine = document.getElementById("under-line");
 const nextTab = document.getElementById("next-tab");
 
 const params = new URLSearchParams(window.location.search);
-const trackID = params.get("trackID");
+const trackId = params.get("trackId");
 
 window.addEventListener("load", async () => {
   requestAnimationFrame(() => moveUnderLine(nextTab)); // 언더라인 위치 설정
