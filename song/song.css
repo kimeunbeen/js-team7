@@ -5,6 +5,12 @@ body {
     box-sizing: border-box;
 }
 
+html, body {
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 .song-main {
     display: flex;
     justify-content: center; 
@@ -37,7 +43,11 @@ body {
 }
 
 .song-bt {
-    margin-bottom: 6em;
+    height: 100px;
+}
+
+.mian-song-img{
+    display: flex;
 }
 
 .song-bt button{
@@ -57,6 +67,12 @@ body {
     width: 100%;
     max-width: 600px;
     height: 600px;
+}
+
+.song-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율을 유지하며 컨테이너에 맞춥니다 */
 }
 
 .song-tmi {
@@ -135,18 +151,25 @@ body {
     border-bottom: 0.1px solid grey;
 }
 .song-rel2{
+    margin-top: -10px;
     margin-top: 0.5em;
     display: flex;
     color: rgb(99, 99, 99);
     padding-bottom: 0.5em;
     border-bottom: 0.1px solid grey;
 }
-.song-item {
+
+#song-list .song-item {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px;
-    border-bottom: 1px solid #444; /* 구분선 추가 */
+    border-bottom: 1px solid #444;
+}
+#downbarSongTmi .song-item {
+    display: flex;
+    align-items: center;
+    gap: 10px
 }
 
 .time-sit{
@@ -205,4 +228,95 @@ body {
 
 .song-sm-img{
     width: 50px;
+}
+
+#under-line {
+    position: absolute;
+    height: 1px;
+    width: 100%; /* 너비를 설정 */
+    background-color: #ffffff;
+    display: inline-block; /* 또는 block 대신 inline-block */
+    box-sizing: border-box; /* 박스 모델에 영향을 미치는 속성 설정 */
+    transition: left 0.3s ease, width 0.3s ease, top 0.3s ease;
+    transform: scaleY(0.05);
+}
+  
+
+@media (min-width: 800px) and (max-width: 1200px) {
+    .song-img {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 500px;
+        height: 500px;
+    }
+    .song-bt {
+        height: 100px;
+        padding-top: 32px;
+    }
+
+}
+@media (min-width: 700px) and (max-width: 800px) {
+    .min-none{
+        display: none;
+    }
+    .song-img {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 500px;
+        height: 500px;
+    }
+    .song-bt {
+        height: 100px;
+        padding-top: 32px;
+    }
+
+
+}
+  
+@media (min-width: 450px) and (max-width: 700px) {
+    .min-none{
+        display: none;
+    }
+
+    .song-img {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+    }
+
+    .container-fluid{
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .song-bt {
+        height: 100px;
+        padding-top: 32px;
+    }
+
+}
+@media (min-width: 0px) and (max-width: 450px) {
+    .min-none{
+        display: none;
+    }
+
+    .song-img {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 200px;
+        height: 200px;
+    }
+
+    .container-fluid{
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .song-bt {
+        height: 50px;
+        padding-top: 10px;
+    }
+
+
 }
