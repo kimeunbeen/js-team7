@@ -59,6 +59,12 @@ body {
     height: 600px;
 }
 
+.song-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지 비율을 유지하며 컨테이너에 맞춥니다 */
+}
+
 .song-tmi {
     margin: 0 auto;
     background-color: rgb(8, 8, 8);
@@ -135,18 +141,25 @@ body {
     border-bottom: 0.1px solid grey;
 }
 .song-rel2{
+    margin-top: -10px;
     margin-top: 0.5em;
     display: flex;
     color: rgb(99, 99, 99);
     padding-bottom: 0.5em;
     border-bottom: 0.1px solid grey;
 }
-.song-item {
+
+#song-list .song-item {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px;
-    border-bottom: 1px solid #444; /* 구분선 추가 */
+    border-bottom: 1px solid #444;
+}
+#downbarSongTmi .song-item {
+    display: flex;
+    align-items: center;
+    gap: 10px
 }
 
 .time-sit{

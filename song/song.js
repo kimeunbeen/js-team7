@@ -72,6 +72,16 @@ const fetchArtistTracks = async (artistID) => {
       appendTrackElement(track, songListContainer);
     });
 
+    const songMainImgSection = document.getElementById("songMainImg"); // 클래스 선택
+    if (songMainImgSection) {
+      songMainImgSection.innerHTML = `<img src="${data.tracks[0].album.images[0].url}" alt="${data.tracks[0].name}">`;
+    }
+
+    const trackSourceDiv = document.getElementById("trackSource");
+    if (trackSourceDiv) {
+      trackSourceDiv.textContent = data.tracks[0].album.label || "레이블 정보 없음";
+    }
+
     // 첫 번째 트랙 처리
     const DownContainer = document.getElementById("downbarSongTmi");
     DownContainer.innerHTML = ""; // 기존 목록 초기화
@@ -112,4 +122,4 @@ const formatTrackDuration = (durationMs) => {
 };
 
 // 🎯 실행 (예: G-DRAGON 검색)
-searchArtistID("G-DRAGON");
+searchArtistID("지드래곤");

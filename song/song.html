@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://kit.fontawesome.com/f86b75229c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../header/header.css">  
+    <!-- <link rel="stylesheet" href="../header/header.css">   -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../header/header.css">
+    <!-- <link rel="stylesheet" href="../header/header.css"> -->
     <link rel="stylesheet" href="song.css"/>
   </head>
   <body>
@@ -20,9 +20,7 @@
               <button>노래</button>
               <button>동영상</button>
             </section>
-            <section class="song-img song-main-img">
-              곡 이미지
-            </section>
+            <section class="song-img song-main-img" id="songMainImg"></section>
           </section>
 
           <section class="col-lg-6 col-md-12 col-sm-12 song-tmi">
@@ -43,7 +41,7 @@
             <div class="song-tmi-src">
               <div>
                 <div style="color: rgb(160, 160, 160); font-size: 14px;">재생중인 트랙 출처</div>
-                <div>출처</div>
+                <div id="trackSource">출처</div>
               </div>
               <div>
                 <button class="song-plus-bt">
@@ -123,13 +121,13 @@
       </section>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(function(){
         $("#header-placeholder").load("../header/header.html");
       });
     </script>
-    <script src="../header/header.js"></script>
+    <script src="../header/header.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="song.js"></script>
   </body>
