@@ -12,9 +12,9 @@ const SCOPES = 'user-library-read user-top-read';
 const SIGN_UP_URL = `https://www.spotify.com/kr-ko/signup?flow_id=${encodeURIComponent(REDIRECT_URI)}&forward_url=${encodeURIComponent(`https://accounts.spotify.com/authorize?scope=${encodeURIComponent(SCOPES)}&response_type=token&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&client_id=${CLIENT_ID}`)}`;
 
 // Wait for DOM to be fully loaded before attaching event listeners
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded - setting up event listeners");
-  
+
   // Sign Up button
   const signUpBtn = document.getElementById('signUpBtn');
   console.log("Sign Up button found:", !!signUpBtn);
@@ -44,17 +44,17 @@ document.addEventListener("DOMContentLoaded", function() {
       window.location.href = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${encodeURIComponent(SCOPES)}`;
     });
   }
-  
+
   // Hamburger menu
   const hamburgerIcon = document.getElementById("hamburgerIcon");
   const navItems = document.querySelector(".nav-items");
   if (hamburgerIcon && navItems) {
-    hamburgerIcon.addEventListener("click", function() {
+    hamburgerIcon.addEventListener("click", function () {
       console.log("Hamburger menu clicked");
       navItems.classList.toggle("show");
     });
   }
-  
+
   // Check for access token on page load
   checkAccessToken();
 });
@@ -64,22 +64,22 @@ function checkAccessToken() {
   console.log("Checking for access token");
   const urlParams = new URLSearchParams(window.location.hash.substring(1));
   const accessToken = urlParams.get('access_token');
-  
+
   if (accessToken) {
     console.log('Access Token found:', accessToken);
     fetchUserProfile(accessToken);
-    
+
     //로컬 개발 환경
-     window.location.href = `http://localhost:5501/main/index.html?access_token=${accessToken}`;
-    
+    //window.location.href = `http://localhost:5501/main/index.html?access_token=${accessToken}`;
+
     //Netlify 배포 환경
-    //window.location.href = `https://candid-squirrel-62f028.netlify.app/main/index.html?access_token=${accessToken}`;
-    
+    window.location.href = `https://candid-squirrel-62f028.netlify.app/main/index.html?access_token=${accessToken}`;
+
     console.log('Login successful! Access token:', accessToken);
   } else {
     const loginBtn = document.getElementById('loginBtn');
     const signUpBtn = document.getElementById('signUpBtn');
-    
+
     if (loginBtn) loginBtn.style.display = 'inline';
     if (signUpBtn) signUpBtn.style.display = 'inline';
     console.log('No login information available.');
@@ -94,23 +94,23 @@ function fetchUserProfile(accessToken) {
       'Authorization': `Bearer ${accessToken}`
     }
   })
-  .then(response => {
-    if (!response.ok) {
-      console.log(`HTTP error! Status: ${response.status}`);
-      return;
-    }
-    return response.json();
-  })
-  .then(data => {
-    if (data) {
-      console.log('User Data:', data);
-      const userNameElement = document.getElementById('user-name');
-      if (userNameElement) {
-        userNameElement.textContent = `Hello, ${data.display_name}!`;
+    .then(response => {
+      if (!response.ok) {
+        console.log(`HTTP error! Status: ${response.status}`);
+        return;
       }
-    }
-  })
-  .catch(error => {
-    console.log('Error fetching user profile:', error);
-  });
+      return response.json();
+    })
+    .then(data => {
+      if (data) {
+        console.log('User Data:', data);
+        const userNameElement = document.getElementById('user-name');
+        if (userNameElement) {
+          userNameElement.textContent = `Hello, ${data.display_name}!`;
+        }
+      }
+    })
+    .catch(error => {
+      console.log('Error fetching user profile:', error);
+    });
 }
