@@ -128,9 +128,25 @@ body {
 .song-rel{
     margin-top: 0.5em;
     display: flex;
+    flex-direction: column;
+    color: rgb(99, 99, 99);
+    width: 100%; /* 부모 요소에 맞게 너비 조정 */
+    padding-bottom: 0.5em;
+    border-bottom: 0.1px solid grey;
+}
+.song-rel2{
+    margin-top: 0.5em;
+    display: flex;
     color: rgb(99, 99, 99);
     padding-bottom: 0.5em;
     border-bottom: 0.1px solid grey;
+}
+.song-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #444; /* 구분선 추가 */
 }
 
 .time-sit{
@@ -140,15 +156,15 @@ body {
     font-size: 15.4px;
 }
 
-.soong-tmi_space div{
+.song-tmi_space div{
     white-space: normal;
     overflow: visible;  
     text-overflow: unset;
 }
 
-.soong-tmi_space{
+.song-tmi_space{
     margin-left: 10px;
-    width: 250px;
+    width: 330px;
     color:  rgb(170, 170, 170);
 }
 
@@ -185,4 +201,8 @@ body {
     padding: 8 10px;
     border: none;
     border-radius: 50px;
+}
+
+.song-sm-img{
+    width: 50px;
 }
