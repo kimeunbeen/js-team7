@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- 투명한 배경 -->
+  <rect width="512" height="512" fill="none"/>
+  
+  <!-- 집 윤곽선 (문이 열린 형태) -->
+  <path d="M256 90 L90 220 L90 422 L200 422 L200 280 L312 280 L312 422 L422 422 L422 220 Z" stroke="white" stroke-width="24" fill="white"/>
+</svg>
