@@ -1,0 +1,144 @@
+body {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 10px 50px;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+
+.popular-artists, .popular-albums {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 1.8em;
+  margin-top:15px;
+  margin-bottom: 10px
+}
+
+/* 가로 스크롤을 위한 스타일 */
+.artist-list, .album-list {
+  display: flex; /* 가로 정렬 유지 */
+  flex-wrap: nowrap; /* 한 줄 유지 (슬라이드) */
+  gap: 8px;
+  width: 100%;
+  overflow-x: auto; /* 가로 스크롤 활성화 */
+  scroll-snap-type: x mandatory; /* 부드러운 스크롤 */
+  scrollbar-width: none;
+  padding: 10px;
+}
+
+
+
+/* 스크롤바 숨기기 */
+.artist-list::-webkit-scrollbar, .album-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* 개별 아이템 크기 고정 */
+.artist, .album {
+  flex: 0 0 calc(100% / 8); 
+  text-align: left;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.artist_name {
+  font-size: 18px; /* 글자 크기 키우기 */
+  font-weight: bold;
+  color: white;
+  margin-top: 30px; /* 이미지와 간격 조정 */
+  text-align: left;
+}
+
+.album_name{
+  font-size: 18px; /* 글자 크기 키우기 */
+  font-weight: bold;
+  color: white;
+  padding-top:20px;
+  text-align: left;
+}
+
+.album_artist {
+  font-size: 14px;
+  color: gray; /* 아티스트 이름을 앨범보다 강조 덜 되게 */
+  margin-top: 5px;
+  text-align: left;
+}
+
+/* 아티스트 이미지는 원형 */
+.artist img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 앨범 이미지는 정사각형 */
+.album img {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.album p {
+  max-width: 180px;
+  word-wrap: break-word;
+  white-space: normal;
+  margin-top: 1px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+
+
+@media screen and (max-width: 1368px) {
+  /* 오른쪽 카메라 아이콘 */
+  .artist, .album {
+    flex: 0 0 calc(100% / 5); /* 5개 보이게 설정 */
+  }
+  .artist-list, .album-list {
+    justify-content: space-between;
+  }
+  body {
+    padding: 1px;
+  }
+}
+
+@media screen and (max-width: 1181px) {
+  .artist, .album {
+    flex: 0 0 calc(100% / 4); 
+  }
+  .artist-list, .album-list {
+    justify-content: space-between; 
+  }
+  body {
+    padding: 20px;
+  }
+}
+
+
+@media screen and (max-width: 430px) {
+  .artist, .album {
+    flex: 0 0 calc(100% / 2); /* 2개 보이게 설정 */
+  }
+  .artist-list, .album-list {
+    justify-content: space-between; 
+  }
+  body {
+    padding: 10px; 
+  }
+}
+
+
