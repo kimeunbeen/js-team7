@@ -4,13 +4,20 @@ body {
     color: white;
 }
 
-a {
+.home-a, .premium-a, .install-a, .app-a, .menu-a {
     text-decoration: none;
     color: white;
 }
 
-a:hover {
-    color: #1ed760;
+.home-a:hover,
+.premium-a:hover,
+.install-a:hover,
+.app-a:hover {
+    width: 100%;
+}
+
+.menu-a:hover {
+    color: #5701BA;
     width: 100%;
 }
 
@@ -20,6 +27,9 @@ nav {
     display: flex;
     align-items: center;
     padding: 0 16px;
+    width: 100%;
+    position: fixed;
+    top: 0
 }
 
 .logo-section {
