@@ -5,6 +5,7 @@
   font-family: Arial, sans-serif;
 }
 body {
+  font-family: "CircularSpotifyText", sans-serif, Helvetica, Arial;
   background-color: #121212;
   color: white;
   overflow-x: hidden;
@@ -67,7 +68,7 @@ body {
 /* 상단 고정 헤더 (스크롤 시 나타남) */
 .sticky-header {
   position: fixed;
-  top: 50px;
+  /* top: 50px; */
   left: 0;
   width: 100%;
   height: 80px;
