@@ -24,14 +24,6 @@ body {
 .header h1 {
   font-size: 1.5rem;
 }
-.follow-btn {
-  padding: 10px 15px;
-  background: #282828;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
 #main-area {
   height: 40vh;
@@ -46,7 +38,18 @@ body {
   position: relative;
 
   transition: filter 0.3s ease-out, transform 0.3s ease-out;
-  z-index: -1;
+  /* z-index: -1; */
+}
+
+.artist-Title a {
+  display: inline-block; /* transform 적용을 위해 필요 */
+  text-decoration: none; /* 밑줄 제거 */
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.artist-Title a:hover {
+  cursor: pointer;
+  transform: scale(1.05); /* 10% 확대 */
 }
 
 /* 아티스트 정보 */
@@ -81,10 +84,6 @@ body {
   display: flex;
   gap: 10px;
   z-index: 1000;
-}
-
-.artist-Title:hover {
-  cursor: pointer;
 }
 
 .sticky-header .play-btn {
