@@ -1,7 +1,10 @@
+body {
+  font-family: "CircularSpotifyText", sans-serif, Helvetica, Arial;
+}
 .main-pd {
   background-color: #121212;
   color: white;
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
   height: 100vh;
   padding: 10px 102px;
   text-align: center;
