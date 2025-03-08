@@ -141,11 +141,10 @@ const searchArtistIncludeAlbums = async (artistID) => {
 // 렌더팅 (메인) 
 const renderMain = () => {
   const artistName = artistMain.name;
-  const artistInfoHTML = `<div class="artist-Title">${artistName}</div>`
-  const stickyArtistHTML = `<div class="artist-Title">${artistName}</div>`;
+  const artistHTML = `<div class="artist-Title"><a href="https://noonafy.netlify.app/artist/index.html?artistId=${artistID}">${artistName}</a></div>`;
 
-  document.getElementById("artist-info").innerHTML = artistInfoHTML;
-  document.getElementById("sticky-header-info").innerHTML = stickyArtistHTML;
+  document.getElementById("artist-info").innerHTML = artistHTML;
+  document.getElementById("sticky-header-info").innerHTML = artistHTML;
 }
 // 렌더링 (인기)
 const renderPopular = () => {
@@ -170,7 +169,7 @@ const renderPopular = () => {
           <div class="track-rank">${index + 1}</div>
           <div class="track-cover"><img src=${trackCover}></div>
           <div class="track-info">
-              <a class="track-title">${trackTitle}</a>
+              <a class="track-title" href="https://noonafy.netlify.app/song/song.html?trackId=${id}">${trackTitle}</a>
           </div>
           <div class="track-meta">• ${trackTime}</div>
         </div>`;
@@ -310,3 +309,4 @@ const type = params.get("type");
 
 // 내 API or Render 파라미터로 넣어주기
 searchArtistID(type, paramArtistID);
+//searchArtistID("name", "taylor swift");

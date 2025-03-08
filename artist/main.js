@@ -2,6 +2,10 @@
 const CLIENT_ID = "c8d711dc82634030b278a15c3fc61d2d";
 const CLIENT_SECRET = "10955bf5083b4c5c8fd51ddd71c2302f";
 
+
+let artistID = "";
+let artistName = "";
+
 async function getAccessToken() {
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -16,8 +20,34 @@ async function getAccessToken() {
   return data.access_token; // ✅ Access Token 반환
 }
 
+// artistID로 검색
+const searchArtistID = async (artistId) => {
+  const token = await getAccessToken();
+  const url = `https://api.spotify.com/v1/artists/${artistId}`;
+
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await response.json();
+
+
+  // API 응답에서 아티스트 정보가 있는지 확인
+  if (data) {
+    artistID = data.id;
+    artistName = data.name;
+
+    searchArtistName(artistName);
+  } else {
+    console.error("아티스트를 찾을 수 없습니다.");
+  }
+};
+
+
 // artistName으로 아티스트 검색
-const searchArtistID = async (artistName) => {
+const searchArtistName = async (artistName) => {
   const token = await getAccessToken();
   const url = `https://api.spotify.com/v1/search?q=${artistName}&type=artist&limit=1`;
 
@@ -29,11 +59,10 @@ const searchArtistID = async (artistName) => {
   });
 
   const data = await response.json();
+  console.log("두번째 data ", data)
 
   // API 응답에서 아티스트 정보가 있는지 확인
   if (data && data.artists && data.artists.items && data.artists.items.length > 0) {
-    const artistID = data.artists.items[0].id;
-    const artistName = data.artists.items[0].name;
     const artistImage = data.artists.items[0].images[0]?.url || "기본 이미지 URL";
 
     // 아티스트 이미지 및 이름 업데이트
@@ -154,7 +183,7 @@ const artistAlbumList = async (artistID) => {
   }
 };
 
-
 // 초기화
-searchArtistID("샤이니");  // "G-Dragon"을 검색하여 아티스트 정보를 표시
+//searchArtistName("샤이니");
+searchArtistID("artistId");  // "G-Dragon"을 검색하여 아티스트 정보를 표시
 /* API 연계 END */
