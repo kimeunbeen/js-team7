@@ -6,7 +6,7 @@ const CLIENT_ID = '76f79bbdec904545b6ca0414c2c7368a';
 //로컬 개발 환경
 //const REDIRECT_URI = 'http://localhost:5501/login/index.html';
 //Netlify 배포 환경
-const REDIRECT_URI = 'https://candid-squirrel-62f028.netlify.app/login/index.html';
+const REDIRECT_URI = 'https://noonafy.netlify.app/login/index.html';
 const SCOPES = 'user-library-read user-top-read';
 
 const SIGN_UP_URL = `https://www.spotify.com/kr-ko/signup?flow_id=${encodeURIComponent(REDIRECT_URI)}&forward_url=${encodeURIComponent(`https://accounts.spotify.com/authorize?scope=${encodeURIComponent(SCOPES)}&response_type=token&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&client_id=${CLIENT_ID}`)}`;
@@ -73,7 +73,7 @@ function checkAccessToken() {
     //window.location.href = `http://localhost:5501/main/index.html?access_token=${accessToken}`;
 
     //Netlify 배포 환경
-    window.location.href = `https://candid-squirrel-62f028.netlify.app/main/index.html?access_token=${accessToken}`;
+    window.location.href = `https://noonafy.netlify.app/main/index.html?access_token=${accessToken}`;
 
     console.log('Login successful! Access token:', accessToken);
   } else {
