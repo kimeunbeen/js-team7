@@ -170,7 +170,7 @@ const renderPopular = () => {
           <div class="track-rank">${index + 1}</div>
           <div class="track-cover"><img src=${trackCover}></div>
           <div class="track-info">
-              <a class="track-title" onclick="onclickSong(${id})">${trackTitle}</a>
+              <a class="track-title">${trackTitle}</a>
           </div>
           <div class="track-meta">• ${trackTime}</div>
         </div>`;
@@ -260,11 +260,10 @@ const renderIncludeAlbum = () => {
   document.getElementById("featured-container").innerHTML = includeAlbumHTML;
 };
 
-// 이벤트 리스너
+// sticky header 이벤트 리스너
 const background = document.querySelector('#main-area');
 const artistInfo = document.querySelector('#artist-info');
 const stickyHeader = document.querySelector('.sticky-header');
-
 
 window.addEventListener('scroll', () => {
   let scrollY = window.scrollY;
@@ -302,20 +301,12 @@ function formatDuration(milliseconds) {
 /*사용자함수 END */
 
 
-// 초기 검색
-searchArtistID("id", "06HL4z0CvFAxyc27GXpf02");
+// URL에서 Query String 가져오기
+const params = new URLSearchParams(window.location.search);
 
-// 아티스트 상세
-const onclickArtist = (artistID) => {
-  const artistId = artistID;
+// 가져온param에서 artistId값 get
+const paramArtistID = params.get("artistId");
+const type = params.get("type");
 
-  // artist/artist.html 호출
-}
-
-// 곡 상세
-const onclickSong = (trackID) => {
-  const trackId = trackID;
-
-  //song/song.html 호출
-
-}
+// 내 API or Render 파라미터로 넣어주기
+searchArtistID(type, paramArtistID);
