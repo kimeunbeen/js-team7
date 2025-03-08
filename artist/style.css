@@ -41,7 +41,12 @@
     display: flex;
     align-items: center;
 }
-  
+
+.artist_song :hover {
+    cursor: pointer;
+}
+
+
 
 /* 기본 상태에서는 텍스트가 잘리지 않도록 설정 */
 .artist_space div {
@@ -99,7 +104,10 @@
     overflow-x: auto;  /* 가로 스크롤 활성화 */
     margin: 10px 0;  /* 좌우 여백 추가 */
     flex-wrap: nowrap; /* 모바일에서 겹치지 않도록 설정 */
-    
+}
+
+.artist_feat_img :hover{
+    cursor: pointer;
 }
 
 @media screen and (max-width:48rem){
