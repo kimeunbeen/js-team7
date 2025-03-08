@@ -123,41 +123,91 @@ function initMobileSearch() {
   const searchArea = document.querySelector('.search-area');
   const magnifyingGlass = document.querySelector('.magnifying-glass-image');
   
-  // 검색 아이콘에 클릭 이벤트 리스너 추가
+  // 현재 화면 크기가 모바일 뷰인지 확인하는 함수
+  function isMobileView() {
+    return window.innerWidth <= 768; // CSS 미디어 쿼리 기준과 동일하게 설정
+  }
+  
+  // 검색 영역과 아이콘이 존재하는지 확인
   if (magnifyingGlass && searchArea) {
     console.log("검색 영역 요소 찾음");
-    // 검색 아이콘을 div로 감싸서 클릭 영역 개선
-    const glassContainer = document.createElement('div');
-    glassContainer.className = 'magnifying-glass-container';
-    magnifyingGlass.parentNode.insertBefore(glassContainer, magnifyingGlass);
-    glassContainer.appendChild(magnifyingGlass);
     
-    // 검색 아이콘 클릭 시 검색창 토글
-    glassContainer.addEventListener('click', function() {
-      searchArea.classList.toggle('active');
-      
-      // 활성화되면 검색창에 포커스
-      if (searchArea.classList.contains('active')) {
-        const searchInput = searchArea.querySelector('.search-input');
-        if (searchInput) {
-          searchInput.style.display = 'block';
-          searchInput.focus();
+    // 돋보기 아이콘에 직접 이벤트 추가
+    magnifyingGlass.style.cursor = 'pointer';
+    
+    // 돋보기 아이콘 클릭 시 검색창 토글 (모바일에서만)
+    magnifyingGlass.addEventListener('click', function(event) {
+      if (isMobileView()) {
+        event.stopPropagation(); // 이벤트 버블링 방지
+        searchArea.classList.toggle('active');
+        
+        // 활성화되면 검색창에 포커스
+        if (searchArea.classList.contains('active')) {
+          const searchInput = searchArea.querySelector('.search-input');
+          if (searchInput) {
+            searchInput.style.display = 'block';
+            setTimeout(() => {
+              searchInput.focus();
+            }, 50); // 약간의 지연을 두어 전환 애니메이션 후 포커스
+          }
+        } else {
+          // 비활성화되면 검색창 숨김
+          const searchInput = searchArea.querySelector('.search-input');
+          if (searchInput) {
+            searchInput.style.display = 'none';
+          }
         }
       }
     });
     
-    // 검색창 외부 클릭 시 검색창 닫기 (이미 document에 클릭 이벤트가 있으므로 조건 추가)
+    // 검색창 외부 클릭 시 검색창 닫기 (모바일에서만)
     document.addEventListener('click', function(event) {
-      if (!searchArea.contains(event.target) && 
-          !event.target.classList.contains('magnifying-glass-container') && 
-          !event.target.classList.contains('magnifying-glass-image')) {
+      if (isMobileView() && 
+          !searchArea.contains(event.target) && 
+          event.target !== magnifyingGlass) {
         searchArea.classList.remove('active');
+        // 검색창 닫을 때 입력창도 숨김
         const searchInput = searchArea.querySelector('.search-input');
         if (searchInput) {
           searchInput.style.display = 'none';
         }
       }
     });
+    
+    // 화면 크기 변경 시 반응형 동작 처리
+    window.addEventListener('resize', function() {
+      if (!isMobileView()) {
+        // 큰 화면에서는 검색창이 항상 보이도록 함
+        searchArea.classList.remove('active');
+        const searchInput = searchArea.querySelector('.search-input');
+        if (searchInput) {
+          searchInput.style.display = 'block';
+        }
+      } else if (!searchArea.classList.contains('active')) {
+        // 작은 화면에서 검색이 활성화되지 않은 경우 입력란 숨김
+        const searchInput = searchArea.querySelector('.search-input');
+        if (searchInput) {
+          searchInput.style.display = 'none';
+        }
+      }
+    });
+    
+    // 페이지 로드 시 초기 화면 크기 확인
+    if (isMobileView()) {
+      // 초기 상태 설정 - 돋보기만 표시
+      const searchInput = searchArea.querySelector('.search-input');
+      if (searchInput) {
+        searchInput.style.display = 'none';
+      }
+      searchArea.classList.remove('active');
+    } else {
+      // 큰 화면에서는 전체 검색창 표시
+      searchArea.classList.remove('active'); // 클래스는 제거하지만
+      const searchInput = searchArea.querySelector('.search-input');
+      if (searchInput) {
+        searchInput.style.display = 'block'; // 입력란은 표시
+      }
+    }
     
     console.log("모바일 검색 기능 초기화 완료");
   } else {
