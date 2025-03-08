@@ -49,7 +49,7 @@ const renderArtists = (artists) => {
       return;
   }
   artistContainer.innerHTML = artists.slice(0, 10).map(artist => `
-      <a href=""https://noonafy.netlify.app/artist/index.html?artistId=${artist.id}" class="artist-link">
+      <a href="https://noonafy.netlify.app/artist/index.html?artistId=${artist.id}" class="artist-link">
           <div class="artist flex-shrink-0">
               <img class="artist_img" src="${artist.images.length ? artist.images[0].url : 'https://via.placeholder.com/100'}" 
                   alt="${artist.name}">

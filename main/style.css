@@ -1,8 +1,9 @@
-body {
+.main-pd {
   background-color: #121212;
   color: white;
   font-family: Arial, sans-serif;
-  padding: 10px 50px;
+  height: 100vh;
+  padding: 10px 102px;
   text-align: center;
   overflow-x: hidden;
 }
@@ -86,8 +87,8 @@ h2 {
 
 /* 앨범 이미지는 정사각형 */
 .album img {
-  width: 180px;
-  height: 180px;
+  width: 170px;
+  height: 170px;
   border-radius: 10px;
   object-fit: cover;
 }
@@ -111,7 +112,7 @@ h2 {
   .artist-list, .album-list {
     justify-content: space-between;
   }
-  body {
+  .main-pd {
     padding: 1px;
   }
 }
@@ -123,7 +124,7 @@ h2 {
   .artist-list, .album-list {
     justify-content: space-between; 
   }
-  body {
+  .main-pd {
     padding: 20px;
   }
 }
@@ -136,7 +137,7 @@ h2 {
   .artist-list, .album-list {
     justify-content: space-between; 
   }
-  body {
+  .main-pd {
     padding: 10px; 
   }
 }
