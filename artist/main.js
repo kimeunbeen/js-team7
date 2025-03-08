@@ -115,7 +115,8 @@ const searchArtistInfo = async (artistID) => {
         </div>
         <div class="artist_time">${formatTrackDuration(track.duration_ms)}</div>
       `;
-
+      `<a href="https://noonafy.netlify.app/search/search.html?type=id&artistId=${"artistId"}" class="artist_song_title">`
+      
       container.appendChild(trackElement);
     });
   } else {
