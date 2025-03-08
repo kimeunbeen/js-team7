@@ -91,23 +91,34 @@ function initProfileDropdown() {
   if (profileButton && profileDropdown) {
     console.log('프로필 요소 찾음');
     
-    // 프로필 버튼 클릭 시 드롭다운 토글
+    // 프로필 버튼 클릭 시 드롭다운 토글 (클래스 대신 직접 스타일 적용)
     profileButton.addEventListener('click', function(event) {
       event.stopPropagation(); // 이벤트 버블링 방지
-      profileDropdown.classList.toggle('active');
-      console.log('드롭다운 토글됨, 현재 클래스:', profileDropdown.className);
+      
+      // 현재 상태에 따라 토글
+      if (profileDropdown.style.display === 'block') {
+        profileDropdown.style.display = 'none';
+        profileDropdown.classList.remove('active'); // 클래스도 함께 제거 (CSS 호환성)
+        console.log('드롭다운 숨김');
+      } else {
+        profileDropdown.style.display = 'block';
+        profileDropdown.classList.add('active'); // 클래스도 함께 추가 (CSS 호환성)
+        console.log('드롭다운 표시, 현재 스타일:', profileDropdown.style.display);
+      }
     });
     
     // 문서 내 다른 곳 클릭 시 드롭다운 닫기
-    document.addEventListener('click', function(event) {
+    $(document).on('click', function(event) {
       if (!profileButton.contains(event.target) && !profileDropdown.contains(event.target)) {
+        profileDropdown.style.display = 'none';
         profileDropdown.classList.remove('active');
       }
     });
     
     // ESC 키 누를 때 드롭다운 닫기
-    document.addEventListener('keydown', function(event) {
+    $(document).on('keydown', function(event) {
       if (event.key === 'Escape') {
+        profileDropdown.style.display = 'none';
         profileDropdown.classList.remove('active');
       }
     });
@@ -161,7 +172,7 @@ function initMobileSearch() {
     });
     
     // 검색창 외부 클릭 시 검색창 닫기 (모바일에서만)
-    document.addEventListener('click', function(event) {
+    $(document).on('click', function(event) {
       if (isMobileView() && 
           !searchArea.contains(event.target) && 
           event.target !== magnifyingGlass) {
@@ -175,7 +186,7 @@ function initMobileSearch() {
     });
     
     // 화면 크기 변경 시 반응형 동작 처리
-    window.addEventListener('resize', function() {
+    $(window).on('resize', function() {
       if (!isMobileView()) {
         // 큰 화면에서는 검색창이 항상 보이도록 함
         searchArea.classList.remove('active');
@@ -205,7 +216,7 @@ function initMobileSearch() {
       searchArea.classList.remove('active'); // 클래스는 제거하지만
       const searchInput = searchArea.querySelector('.search-input');
       if (searchInput) {
-        searchInput.style.display = 'block'; // 입력란은 표시
+        searchInput.style.display = 'block';
       }
     }
     

@@ -30,7 +30,8 @@ nav {
     padding: 0 16px;
     width: 100%;
     position: fixed;
-    top: 0
+    top: 0;
+    overflow: visible !important;
 }
 
 .logo-section {
@@ -68,7 +69,7 @@ nav {
 
 .home-image {
     background-color: #2a2a2a;
-    width: 30px;
+    width: 35px;
     border-radius: 50%;
     padding: 7px;
 }
@@ -105,7 +106,8 @@ nav {
     color: white;
     font-size: 14px;
     outline: none;
-    display: block; /* Ensure it's visible by default */
+    display: block;
+    padding: 10px;
 }
 
 .search-input::placeholder {
@@ -183,6 +185,7 @@ nav {
 
 .profile-container {
     position: relative;
+    z-index: 9999; /* 이 속성 추가 */
 }
 
 .profile-button {
@@ -212,8 +215,11 @@ nav {
     border-radius: 4px;
     box-shadow: 0 16px 24px rgba(0,0,0,0.3);
     margin-top: 8px;
-    z-index: 1000;
+    /* z-index: 1000; */
+    z-index: 9999; /* 이 값을 1000에서 9999로 증가 */
     display: none; /* Hidden by default */
+    max-height: 90vh; /* 화면 높이의 90%로 제한 */
+    overflow-y: auto; /* 높이를 넘어가면 스크롤 */
 }
 
 /* active 클래스가 있을 때 보이도록 설정 */
@@ -308,8 +314,13 @@ nav {
     
     /* 앱 버튼 표시 (태블릿에서도 보이게) */
     .app-button {
+      background-color: #FFFFFF;
+      border-radius: 500px;
       display: flex;
-      width: 70px; /* 모바일보다 조금 작게 */
+      align-items: center;
+      height: 30px;
+      width: 75px;
+      justify-content: center;
     }
     
     /* 알림 버튼은 유지, 하지만 설치 버튼 숨김 */
@@ -338,7 +349,7 @@ nav {
   @media screen and (max-width: 768px) {
     /* 앱 버튼 표시 */
     .app-button {
-            background-color: #FFFFFF;
+    background-color: #FFFFFF;
     border-radius: 500px;
     display: flex;
     align-items: center;
