@@ -22,25 +22,47 @@ async function getAccessToken() {
   return data.access_token; // ✅ Access Token 반환
 }
 
-const searchArtistID = async (artistName) => {
+const searchArtistID = async (type, artistName) => {
   const token = await getAccessToken();
-  const url = `https://api.spotify.com/v1/search?q=${artistName}&type=artist&limit=1`;
 
-  const response = await fetch(url, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
 
-  console.log("response ", response);
-  const data = await response.json();
+  if (type == "name") {
+    let url = `https://api.spotify.com/v1/search?q=${artistName}&type=artist&limit=1`;
 
-  artistMain = data.artists.items[0];
-  console.log("artistMain ", artistMain);
-  //console.log("아티스트 정보:", data.artists.items[0].id);
+    let response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-  artistID = data.artists.items[0].id;
+
+    console.log("response ", response);
+    let data = await response.json();
+
+    artistMain = data.artists.items[0];
+    console.log("artistMain ", artistMain);
+    //console.log("아티스트 정보:", data.artists.items[0].id);
+
+    artistID = data.artists.items[0].id;
+    console.log("artistID", artistID)
+
+  } else if (type == "id") {
+    let url = `https://api.spotify.com/v1/artists/${artistName}`;
+    let response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    data = await response.json();
+    console.log("data", data)
+    artistMain = data;
+    artistID = data.id;
+  }
+
+
+
   renderMain();
 
   searchArtistInfo(artistID);
@@ -116,16 +138,14 @@ const searchArtistIncludeAlbums = async (artistID) => {
 
 /* API 연계 END */
 
-// G-DRAGON 검색
-searchArtistID("taylor swift");
-
 // 렌더팅 (메인) 
 const renderMain = () => {
   const artistName = artistMain.name;
-  const artistHTML = `<div>${artistName}</div>`
+  const artistInfoHTML = `<div class="artist-Title">${artistName}</div>`
+  const stickyArtistHTML = `<div class="artist-Title">${artistName}</div>`;
 
-  document.getElementById("artist-info").innerHTML = artistHTML;
-  document.getElementById("sticky-header-info").innerHTML = artistHTML;
+  document.getElementById("artist-info").innerHTML = artistInfoHTML;
+  document.getElementById("sticky-header-info").innerHTML = stickyArtistHTML;
 }
 // 렌더링 (인기)
 const renderPopular = () => {
@@ -144,12 +164,13 @@ const renderPopular = () => {
         trackTitle = track.name.length > 15 ? track.name.substring(0, 15) + "..." : track.name;
       }
       const trackTime = formatDuration(track.duration_ms);
+      const id = track.id;
 
       return `<div class="track-item">
           <div class="track-rank">${index + 1}</div>
           <div class="track-cover"><img src=${trackCover}></div>
           <div class="track-info">
-              <a href="/track/0djkJ3iAARXRCbfbwwVc3o" class="track-title">${trackTitle}</a>
+              <a class="track-title">${trackTitle}</a>
           </div>
           <div class="track-meta">• ${trackTime}</div>
         </div>`;
@@ -239,11 +260,10 @@ const renderIncludeAlbum = () => {
   document.getElementById("featured-container").innerHTML = includeAlbumHTML;
 };
 
-// 이벤트 리스너
+// sticky header 이벤트 리스너
 const background = document.querySelector('#main-area');
 const artistInfo = document.querySelector('#artist-info');
 const stickyHeader = document.querySelector('.sticky-header');
-
 
 window.addEventListener('scroll', () => {
   let scrollY = window.scrollY;
@@ -279,3 +299,14 @@ function formatDuration(milliseconds) {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 /*사용자함수 END */
+
+
+// URL에서 Query String 가져오기
+const params = new URLSearchParams(window.location.search);
+
+// 가져온param에서 artistId값 get
+const paramArtistID = params.get("artistId");
+const type = params.get("type");
+
+// 내 API or Render 파라미터로 넣어주기
+searchArtistID(type, paramArtistID);
