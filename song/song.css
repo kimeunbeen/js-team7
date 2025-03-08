@@ -1,0 +1,208 @@
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.song-main {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap; 
+    background-color: rgb(8, 8, 8);
+    width: 100%;
+    min-height: 100vh;
+}
+
+.container-fluid {
+    padding: 0; 
+    margin: 0;
+}
+
+.song-category button {
+    margin-right: 0.4em;
+    border: none; 
+    background-color: rgba(39, 39, 39, 0.781);
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 0.4em;
+}
+
+.song-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; 
+}
+
+.song-bt {
+    margin-bottom: 6em;
+}
+
+.song-bt button{
+    color: white;
+    border-radius: 15px;
+    border: none;
+    background-color: rgb(65, 65, 65);
+}
+
+.song-bt button:hover{
+    transform: scale(1.08);
+    transition: all 0.2s ease;
+}
+
+.song-img {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    max-width: 600px;
+    height: 600px;
+}
+
+.song-tmi {
+    margin: 0 auto;
+    background-color: rgb(8, 8, 8);
+    width: 100%;
+    max-width: 600px;
+    min-height: 100vh;
+}
+
+.song-tabs {
+    display: flex;
+    justify-content: space-around; 
+    width: 100%;
+    color: rgb(160, 160, 160);
+}
+
+.tabs-area {
+    margin-top: 3.5em;
+    border-bottom: 1px solid rgb(160, 160, 160);
+    margin-bottom: 1em;
+}
+
+.song-tabs div {
+    padding: 1em;
+}
+
+.song-category {
+    display: flex;
+    padding-top: 1em;
+    padding-bottom: 0.3em;
+    overflow-x: auto; 
+    white-space: nowrap;
+}
+
+.song-category::-webkit-scrollbar {
+    height: 12px;
+}
+
+.song-category::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.808);
+}
+
+.song-category::-webkit-scrollbar-track {
+    background-color: rgb(0, 0, 0);
+}
+
+.down-bar {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    bottom: 0;
+    background-color: rgb(37, 37, 37);
+    width: 100%;
+    height: 65px;
+    border-top: 1.8px solid rgb(54, 54, 54);
+}
+
+.row>* {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.row {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.song-rel{
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    color: rgb(99, 99, 99);
+    width: 100%; /* 부모 요소에 맞게 너비 조정 */
+    padding-bottom: 0.5em;
+    border-bottom: 0.1px solid grey;
+}
+.song-rel2{
+    margin-top: 0.5em;
+    display: flex;
+    color: rgb(99, 99, 99);
+    padding-bottom: 0.5em;
+    border-bottom: 0.1px solid grey;
+}
+.song-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #444; /* 구분선 추가 */
+}
+
+.time-sit{
+    margin-left: auto;
+    margin-right: 0.8em;
+    margin-top: 0.8em;
+    font-size: 15.4px;
+}
+
+.song-tmi_space div{
+    white-space: normal;
+    overflow: visible;  
+    text-overflow: unset;
+}
+
+.song-tmi_space{
+    margin-left: 10px;
+    width: 330px;
+    color:  rgb(170, 170, 170);
+}
+
+.song-rel img{
+    margin-left: 0.8em;
+    width: 40px;
+    height: 40px;
+    margin-top: 0.2em;
+}
+
+.icon-song{
+    margin: 1em;
+}
+
+.play-zone{
+    display: flex;
+    color: white;
+}
+
+.right-song-down{
+    margin-top: 0.4em;
+    color: rgb(99, 99, 99);
+}
+
+.song-tmi-src{
+    display: flex;
+    color: white;
+    justify-content: space-between;
+}
+
+.song-plus-bt{
+    margin-top: 0.5em;
+    background-color: white;
+    padding: 8 10px;
+    border: none;
+    border-radius: 50px;
+}
+
+.song-sm-img{
+    width: 50px;
+}
