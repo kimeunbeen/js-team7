@@ -4,8 +4,7 @@ const CLIENT_SECRET = "fd23b19e7af64e92b5e2c85c975df942"; // 여기에 Client Se
 // Base64 인코딩
 const encodedCredentials = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
 
-// const params = new URLSearchParams(window.location.search);
-// const artistId = params.get("id");
+
 
 // 🔑 Access Token 요청
 const getAccessToken = async () => {
@@ -21,27 +20,6 @@ const getAccessToken = async () => {
   const data = await response.json();
   return data.access_token;
 };
-
-// const fetchArtistDetail = async () => {
-//   const token = await getAccessToken();
-
-//   const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
-//       method: "GET",
-//       headers: {
-//           "Authorization": `Bearer ${token}`
-//       }
-//   });
-
-//   const data = await response.json();
-//   console.log("🎵 아티스트 상세 정보:", data);
-
-//   document.getElementById("artist-name").textContent = data.name;
-//   document.getElementById("artist-image").src = data.images[0].url;
-//   document.getElementById("artist-genres").textContent = data.genres.join(", ");
-//   document.getElementById("artist-followers").textContent = `팔로워: ${data.followers.total.toLocaleString()}명`;
-// };
-
-
 
 // [1] 인기 아티스트 가져오기 (최대 10개)
 const fetchSpotifyArtists = async () => {
@@ -66,26 +44,21 @@ const fetchSpotifyArtists = async () => {
 
 const renderArtists = (artists) => {
   const artistContainer = document.getElementById("artist-container");
-  artistContainer.innerHTML = ""; // 기존 내용을 지우고 새로 추가
-
-  const artistHTML = artists.slice(0, 10).map(artist => `
-      <div class="artist flex-shrink-0">
-          <img class="artist_img" src="${artist.images.length ? artist.images[0].url : 'https://via.placeholder.com/100'}" 
-              alt="${artist.name}">
-          <p class="artist_name">${artist.name}</p>
-      </div>
+  if (!artistContainer) {
+      console.error("🎤 아티스트 컨테이너를 찾을 수 없음");
+      return;
+  }
+  artistContainer.innerHTML = artists.slice(0, 10).map(artist => `
+      <a href=""https://noonafy.netlify.app/artist/index.html?artistId=${artist.id}" class="artist-link">
+          <div class="artist flex-shrink-0">
+              <img class="artist_img" src="${artist.images.length ? artist.images[0].url : 'https://via.placeholder.com/100'}" 
+                  alt="${artist.name}">
+              <p class="artist_name">${artist.name}</p>
+          </div>
+      </a>
   `).join('');
-
-  artistContainer.innerHTML = artistHTML;
-
-  // 클릭 이벤트 추가 (아티스트 클릭 시 상세 페이지로 이동)
-  document.querySelectorAll(".artist").forEach(artistElement => {
-    artistElement.addEventListener("click", () => {
-        const artistId = artistElement.getAttribute("data-id");
-        window.location.href = `artist-detail.html?id=${artistId}`; // 상세 페이지로 이동
-    });
-  });
 };
+
 
 // 🎵 [2] 최신 앨범 가져오기
 const fetchSpotifyAlbums = async () => {
