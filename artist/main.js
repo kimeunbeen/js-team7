@@ -154,7 +154,6 @@ const artistAlbumList = async (artistID) => {
   }
 };
 
-
 // 초기화
 searchArtistID("샤이니");  // "G-Dragon"을 검색하여 아티스트 정보를 표시
 /* API 연계 END */
