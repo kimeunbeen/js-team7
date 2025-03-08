@@ -104,4 +104,3 @@ const renderAlbums = (albums) => {
 fetchSpotifyArtists();
 fetchSpotifyAlbums();
 // fetchArtistDetail();
-
