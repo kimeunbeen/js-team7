@@ -55,8 +55,8 @@ body {
   height: 60vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-end;
   color: white;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   font-size: 50px;
@@ -70,6 +70,7 @@ body {
   top: 50px;
   left: 0;
   width: 100%;
+  height: 80px;
   background: #353535;
   color: white;
   text-align: left;
@@ -84,9 +85,11 @@ body {
 }
 
 .sticky-header .play-btn {
-  align-content: center;
-  justify-content: center;
-  align-items: center;
+  max-width: 100%; /* 부모 요소 크기에 맞춤 */
+  max-height: 100%; /* 부모 요소 크기에 맞춤 */
+  width: auto; /* 가로 비율 유지 */
+  height: auto; /* 세로 비율 유지 */
+  object-fit: contain; /* 원본 비율 유지하면서 div 내에서 크기 조절 */
 }
 #sticky-header-info {
   align-content: center;
@@ -101,22 +104,19 @@ body {
 
 .main-play {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   width: 100%;
   height: 100px;
-  padding: 20px;
-  gap: 20px;
-}
-.play-btn {
-  /* padding: 10px 20px; */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 15px;
+  /* position: relative; 상대적 위치 지정 */
 }
 
 .play-btn img {
-  width: 50px;
-  height: 50px;
+  max-width: 100%; /* 부모 요소 크기에 맞춤 */
+  max-height: 100%; /* 부모 요소 크기에 맞춤 */
+  width: auto; /* 가로 비율 유지 */
+  height: auto; /* 세로 비율 유지 */
+  object-fit: contain; /* 원본 비율 유지하면서 div 내에서 크기 조절 */
 }
 main {
   margin-top: 100px;
@@ -218,6 +218,35 @@ main {
   max-width: 150px;
   max-height: 150px;
   border-radius: 10px;
+}
+
+.play-button {
+  position: absolute;
+  bottom: 10px; /* 아래쪽 위치 조정 */
+  right: 5%; /* 오른쪽 위치 조정 */
+  width: 50px; /* 버튼 크기 */
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  opacity: 0; /* 처음에는 숨김 */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.play-button img {
+  width: 60%;
+  height: auto;
+}
+
+.album-card {
+  position: relative; /* 재생 버튼 위치를 조정하기 위해 relative 설정 */
+  display: inline-block;
+  overflow: hidden;
+}
+
+.album-card:hover .play-button {
+  opacity: 1; /* 마우스 오버 시 버튼 표시 */
 }
 
 @media (max-width: 768px) {

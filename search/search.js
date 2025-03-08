@@ -183,7 +183,12 @@ const renderAlbum = () => {
 
 
       return `<div class="item">
+      <div class = "album-card">
             <img src=${albumCover} alt=${albumTitle} />
+            <div class="play-button">
+              <img src="img/play.png" alt="재생">
+            </div>
+            </div>
             <p>${albumTitle}</p>
             <div class="albumDetail">${year} •${albumType}</div>
           </div>`;
@@ -219,7 +224,12 @@ const renderIncludeAlbum = () => {
 
 
       return `<div class="item">
+      <div class = "album-card">
             <img src=${albumCover} alt=${albumTitle} />
+            <div class="play-button">
+              <img src="img/play.png" alt="재생">
+            </div>
+            </div>
             <p>${albumTitle}</p>
             <div class="albumDetail">${year} •${albumType}</div>
           </div>`;
