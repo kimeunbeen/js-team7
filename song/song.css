@@ -43,8 +43,7 @@ html, body {
 }
 
 .song-bt {
-    position: relative;
-    bottom: 5em;
+    height: 100px;
 }
 
 .mian-song-img{
@@ -229,4 +228,95 @@ html, body {
 
 .song-sm-img{
     width: 50px;
+}
+
+#under-line {
+    position: absolute;
+    height: 1px;
+    width: 100%; /* 너비를 설정 */
+    background-color: #ffffff;
+    display: inline-block; /* 또는 block 대신 inline-block */
+    box-sizing: border-box; /* 박스 모델에 영향을 미치는 속성 설정 */
+    transition: left 0.3s ease, width 0.3s ease, top 0.3s ease;
+    transform: scaleY(0.05);
+}
+  
+
+@media (min-width: 800px) and (max-width: 1200px) {
+    .song-img {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 500px;
+        height: 500px;
+    }
+    .song-bt {
+        height: 100px;
+        padding-top: 32px;
+    }
+
+}
+@media (min-width: 700px) and (max-width: 800px) {
+    .min-none{
+        display: none;
+    }
+    .song-img {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 500px;
+        height: 500px;
+    }
+    .song-bt {
+        height: 100px;
+        padding-top: 32px;
+    }
+
+
+}
+  
+@media (min-width: 450px) and (max-width: 700px) {
+    .min-none{
+        display: none;
+    }
+
+    .song-img {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+    }
+
+    .container-fluid{
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .song-bt {
+        height: 100px;
+        padding-top: 32px;
+    }
+
+}
+@media (min-width: 0px) and (max-width: 450px) {
+    .min-none{
+        display: none;
+    }
+
+    .song-img {
+        background-color: rgb(255, 255, 255);
+        width: 100%;
+        max-width: 200px;
+        height: 200px;
+    }
+
+    .container-fluid{
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .song-bt {
+        height: 50px;
+        padding-top: 10px;
+    }
+
+
 }
