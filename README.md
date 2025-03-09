@@ -1,5 +1,5 @@
 # 🎶nuna-pi
-![image](https://github.com/user-attachments/assets/c2cbaa45-ab13-460f-908a-5f8236a956cf)
+![js-project-7team](https://github.com/user-attachments/assets/69abc8ac-487f-4b59-9269-ba6b89d0ba38)
 
 ## 📁프로젝트 소개
 사용자가 쉽고 빠르게 음악을 검색하고, 다양한 아티스트와 최신 음악 정보를 확인할 수 있는 음악 스트리밍 반응웹 사이트입니다.
