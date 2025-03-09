@@ -164,12 +164,12 @@ const renderPopular = () => {
       }
       const trackTime = formatDuration(track.duration_ms);
       const id = track.id;
-
+      //https://noonafy.netlify.app/song/song.html?trackId=${id}
       return `<div class="track-item">
           <div class="track-rank">${index + 1}</div>
           <div class="track-cover"><img src=${trackCover}></div>
           <div class="track-info">
-              <a class="track-title" href="https://noonafy.netlify.app/song/song.html?trackId=${id}">${trackTitle}</a>
+              <a class="track-title" href="../song/song.html?trackId=${id}">${trackTitle}</a>
           </div>
           <div class="track-meta">• ${trackTime}</div>
         </div>`;

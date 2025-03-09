@@ -11,6 +11,12 @@ function initHeaderJS() {
   // 검색 이벤트 리스너 초기화
   initSearchFunctionality();
 
+<<<<<<< HEAD
+=======
+  // 로그아웃 버튼 초기화
+  initLogoutButton();
+  
+>>>>>>> ca56a3c9aaea7018a706252f5b8915664bed0c8f
   console.log("헤더 JS 초기화 완료");
 }
 
@@ -276,5 +282,35 @@ function initMobileSearch() {
     console.log("모바일 검색 기능 초기화 완료");
   } else {
     console.error("검색 영역 또는 아이콘을 찾을 수 없습니다");
+  }
+}
+
+// 로그아웃 버튼 초기화 함수
+function initLogoutButton() {
+  const logoutButton = document.getElementById('logout');
+  
+  if (logoutButton) {
+    console.log('로그아웃 버튼 요소 찾음');
+    
+    logoutButton.addEventListener('click', function(event) {
+      event.preventDefault(); // 기본 링크 동작 방지
+      
+      console.log('로그아웃 버튼 클릭됨');
+      
+      // 로컬 스토리지에서 토큰 제거
+      localStorage.removeItem('spotify_access_token');
+      
+      // 세션 스토리지에서도 토큰 제거 (토큰이 세션 스토리지에 저장된 경우)
+      sessionStorage.removeItem('spotify_access_token');
+      
+      console.log('로그아웃 완료: 토큰이 제거되었습니다.');
+      
+      // 로그인 페이지로 리다이렉트
+      window.location.href = '/login/index.html';
+    });
+    
+    console.log('로그아웃 버튼 이벤트 리스너 초기화 완료');
+  } else {
+    console.error('로그아웃 버튼을 찾을 수 없습니다');
   }
 }
