@@ -9,16 +9,26 @@ body {
     color: white;
 }
 
-.home-a:hover,
-.premium-a:hover,
-.install-a:hover,
-.app-a:hover {
-    width: 100%;
+.search-area:hover {
+    filter: brightness(1.1);
 }
 
-.menu-a:hover {
-    color: #5701BA;
-    width: 100%;
+.home-image:hover {
+    filter: brightness(1.1); /* 호버 시 10% 더 밝아짐 */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* 밝은 그림자 효과 추가 */
+}
+
+.install-button:hover,
+.notification-icon:hover,
+.profile-button:hover {
+    transform: scale(1.02); /* 호버 시 5% 커짐 */
+    filter: brightness(1.1); /* 호버 시 10% 더 밝아짐 */
+}
+
+.premium-button:hover {
+    transform: scale(1.02); /* 호버 시 5% 커짐 */
+    filter: brightness(1.1); /* 호버 시 10% 더 밝아짐 */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* 밝은 그림자 효과 추가 */
 }
 
 nav {
@@ -70,7 +80,7 @@ nav {
 
 .home-image {
     background-color: #2a2a2a;
-    width: 35px;
+    width: 40px;
     border-radius: 50%;
     padding: 7px;
 }
