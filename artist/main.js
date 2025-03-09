@@ -122,15 +122,16 @@ const searchArtistInfo = async (artistID) => {
       trackElement.innerHTML = `
         <img src="${track.album.images[0].url}" alt="${track.name}" class="track_image">
         <div class="artist_space">
-          <div>${trackName}</div>
+          <div><a class="artist" href="https://noonafy.netlify.app/song/song.html?trackId=${track.id}">${trackName}</a></div>
+          
           <div>${track.artists.map(artist => artist.name).join(", ")}</div>
         </div>
         <div class="artist_time">${formatTrackDuration(track.duration_ms)}</div>
       `;
-    
+
       container.appendChild(trackElement);
-      
-      
+
+
     });
   } else {
     console.error("아티스트의 트랙을 찾을 수 없습니다.");
@@ -205,21 +206,15 @@ const renderArtists = (artists) => {
     return;
   }
   artistContainer.innerHTML = artists.slice(0, 10).map(artist => `
-    <a href="https://noonafy.netlify.app/main/index.html?artistId=${artist.id}" class="artist-link">
-        <div class="artist flex-shrink-0">
-            <img class="artist_img" src="${artist.images.length ? artist.images[0].url : 'https://via.placeholder.com/100'}" 
+  
+     <div class="artist flex-shrink-0">
+          <img class="artist_img" src="${artist.images.length ? artist.images[0].url : 'https://via.placeholder.com/100'}" 
                 alt="${artist.name}">
+          
             <p class="artist_name">${artist.name}</p>
-        </div>
-    </a>
-
-    <a href="https://noonafy.netlify.app/search/search.html?artistId=${artist.id}" class="artist-link">
-        <div class="artist flex-shrink-0">
-            <img class="artist_img" src="${artist.images.length ? artist.images[0].url : 'https://via.placeholder.com/100'}" 
-                alt="${artist.name}">
-            <p class="artist_name">${artist.name}</p>
-        </div>
-    </a>
+          
+      </div>
+    
   `).join('');
 };
 
@@ -230,6 +225,7 @@ const params = new URLSearchParams(window.location.search);
 const paramArtistID = params.get("artistId");
 
 // 초기화
-//searchArtistName("샤이니");
+// searchArtistName("샤이니");
+// searchArtistID("6eUKZXaKkcviH0Ku9w2n3V");
 searchArtistID(paramArtistID);  // "G-Dragon"을 검색하여 아티스트 정보를 표시
 /* API 연계 END */

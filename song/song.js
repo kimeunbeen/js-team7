@@ -1,7 +1,7 @@
 const CLIENT_ID = "76f79bbdec904545b6ca0414c2c7368a";
 const CLIENT_SECRET = "792d3d82903f4bb188b5dec3659b8ee1";
 
-let mode = '다음 트랙'; 
+let mode = '다음 트랙';
 let currentArtistID = null;
 let currentTrackID = null;
 
@@ -11,7 +11,7 @@ const nextTab = document.getElementById("next-tab");
 
 const params = new URLSearchParams(window.location.search);
 const trackID = params.get("trackId");
-// const trackID = "1QV6tiMFM6fSOKOGLMHYYg"; 
+//const trackID = "1QV6tiMFM6fSOKOGLMHYYg"; 
 
 window.addEventListener("load", async () => {
   requestAnimationFrame(() => moveUnderLine(nextTab)); // 언더라인 위치 설정
@@ -50,7 +50,7 @@ function moveUnderLine(target) {
 
   underLine.style.left = target.offsetLeft + "px";
   underLine.style.width = target.offsetWidth + "px";
-  underLine.style.top = (target.offsetTop + target.offsetHeight - 15) + "px"; 
+  underLine.style.top = (target.offsetTop + target.offsetHeight - 15) + "px";
 }
 
 // Spotify API 요청 처리
@@ -72,13 +72,13 @@ const fetchTrackInfo = async (trackID) => {
   const url = `https://api.spotify.com/v1/tracks/${trackID}`;
 
   const data = await fetchData(url, token);
-  console.log(data); 
-  
+  console.log(data);
+
   if (data) {
-    displayTrackDetail(data); 
-    currentArtistID = data.artists[0].id; 
-    currentTrackID = trackID; 
-    fetchArtistTracks(currentArtistID); 
+    displayTrackDetail(data);
+    currentArtistID = data.artists[0].id;
+    currentTrackID = trackID;
+    fetchArtistTracks(currentArtistID);
   } else {
     console.error("트랙 정보를 가져올 수 없습니다.");
   }
@@ -87,14 +87,14 @@ const fetchTrackInfo = async (trackID) => {
 const displayTrackDetail = (track) => {
   const songImgContainer = document.querySelector('.song-img');
   if (songImgContainer) {
-    songImgContainer.innerHTML = ''; 
-    const imgElement = document.createElement('img'); 
-    imgElement.src = track.album.images[0]?.url || "기본 이미지 URL"; 
-    imgElement.alt = track.name; 
+    songImgContainer.innerHTML = '';
+    const imgElement = document.createElement('img');
+    imgElement.src = track.album.images[0]?.url || "기본 이미지 URL";
+    imgElement.alt = track.name;
     songImgContainer.appendChild(imgElement);
   }
 
-  const DownContainer = document.getElementById("downbarSongTmi");  
+  const DownContainer = document.getElementById("downbarSongTmi");
 
   DownContainer.innerHTML = `
     <img class="song-sm-img song-main-img" src="${track.album.images[0]?.url}" alt="${track.name}">
@@ -107,10 +107,11 @@ const displayTrackDetail = (track) => {
     <i class="fa-solid fa-ellipsis-vertical icon-song min-none2 "></i>
   `;
 
+
   const sourceContainer = document.getElementById("trackSource"); 
   const label = track.album.label || "레이블 없음"; 
   sourceContainer.innerHTML = `${label}`;
-  
+
   // 전체 시간 표시
   const trackTimeElement = document.getElementById("track-time");
   trackTimeElement.textContent = formatTrackDuration(track.duration_ms);
@@ -145,7 +146,7 @@ const displayTracks = (tracks) => {
   if (currentTrackID) {
     const currentTrack = tracks.find(track => track.id === currentTrackID);
     if (currentTrack) {
-      appendTrackElement(currentTrack, songListContainer, true);  
+      appendTrackElement(currentTrack, songListContainer, true);
     }
   }
 
@@ -159,7 +160,7 @@ const displayTracks = (tracks) => {
 const appendTrackElement = (track, container, isFirstTrack = false) => {
   const trackElement = document.createElement("div");
   trackElement.classList.add("song-item");
-  
+
   trackElement.innerHTML = `
     <img class="song-sm-img song-main-img" src="${track.album.images[0].url}" alt="${track.name}">
     <div class="song-tmi_space">
@@ -168,7 +169,7 @@ const appendTrackElement = (track, container, isFirstTrack = false) => {
     </div>
     <div class="time-sit min-none4">${formatTrackDuration(track.duration_ms)}</div>
   `;
-  
+
   trackElement.addEventListener("click", () => {
     fetchTrackInfo(track.id);  
   });
@@ -201,16 +202,16 @@ const fetchLyrics = async (trackID) => {
     if (data.lyrics) {
       return data.lyrics;
     } else {
-      return "가사가 없습니다.";  
+      return "가사가 없습니다.";
     }
   } catch (error) {
     console.error("가사를 가져올 수 없습니다.", error);
-    return "가사를 가져올 수 없습니다.";  
+    return "가사를 가져올 수 없습니다.";
   }
 };
 
 const formatTrackDuration = (durationMs) => {
-  const minutes = Math.floor(durationMs / 60000); 
+  const minutes = Math.floor(durationMs / 60000);
   const seconds = ((durationMs % 60000) / 1000).toFixed(0);
   return `${minutes}:${(seconds < 10 ? '0' : '') + seconds}`;
 };
