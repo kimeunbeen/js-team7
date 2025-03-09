@@ -227,6 +227,7 @@ body {
   padding: 8 10px;
   border: none;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .song-sm-img {
@@ -244,7 +245,7 @@ body {
   transform: scaleY(0.05);
 }
 
-@media (min-width: 800px) and (max-width: 1200px) {
+@media (min-width: 980px) and (max-width: 1200px) {
   .song-img {
     background-color: rgb(255, 255, 255);
     width: 100%;
@@ -256,10 +257,26 @@ body {
     padding-top: 32px;
   }
 }
-@media (min-width: 700px) and (max-width: 800px) {
-  .min-none {
-    display: none;
+@media (min-width: 800px) and (max-width: 980px) {
+    .song-img {
+      background-color: rgb(255, 255, 255);
+      width: 100%;
+      max-width: 500px;
+      height: 500px;
+    }
+    .song-bt {
+      height: 100px;
+      padding-top: 32px;
+    }
+    .min-none3{
+        display: none;
+    }
   }
+@media (min-width: 700px) and (max-width: 800px) {
+    .min-none,.min-none3{
+        display: none;
+    }
+
   .song-img {
     background-color: rgb(255, 255, 255);
     width: 100%;
@@ -272,10 +289,10 @@ body {
   }
 }
 
-@media (min-width: 450px) and (max-width: 700px) {
-  .min-none {
-    display: none;
-  }
+@media (min-width: 500px) and (max-width: 700px) {
+    .min-none,.min-none2,.min-none3 {
+        display: none;
+      }
 
   .song-img {
     background-color: rgb(255, 255, 255);
@@ -294,10 +311,33 @@ body {
     padding-top: 32px;
   }
 }
-@media (min-width: 0px) and (max-width: 450px) {
-  .min-none {
-    display: none;
+
+@media (min-width: 450px) and (max-width: 500px) {
+    .min-none,.min-none2,.min-none3,.min-none4 {
+      display: none;
+    }
+  
+    .song-img {
+      background-color: rgb(255, 255, 255);
+      width: 100%;
+      max-width: 400px;
+      height: 400px;
+    }
+  
+    .container-fluid {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  
+    .song-bt {
+      height: 100px;
+      padding-top: 32px;
+    }
   }
+@media (min-width: 0px) and (max-width: 450px) {
+    .min-none,.min-none2,.min-none4 {
+        display: none;
+    }
 
   .song-img {
     background-color: rgb(255, 255, 255);
@@ -315,4 +355,5 @@ body {
     height: 50px;
     padding-top: 10px;
   }
+
 }

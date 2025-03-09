@@ -4,18 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The song details</title>
-    <script
-      src="https://kit.fontawesome.com/f86b75229c.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- <link rel="stylesheet" href="../header/header.css">   -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <!-- <link rel="stylesheet" href="../header/header.css"> -->
+    <script src="https://kit.fontawesome.com/f86b75229c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../fonts/common.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
     <link rel="stylesheet" href="song.css" />
     <link rel="icon" href="./image/logo.png" />
   </head>
@@ -103,19 +94,19 @@
       <section class="down-bar">
         <div class="play-zone">
           <div style="margin-top: 0.5em">
-            <i class="fa-solid fa-backward icon-song min-none"></i>
+            <i class="fa-solid fa-backward icon-song min-none min-none3"></i>
             <i class="fa-solid fa-play icon-song"></i>
-            <i class="fa-solid fa-forward icon-song min-none"></i>
+            <i class="fa-solid fa-forward icon-song min-none min-none3"></i>
           </div>
-          <div
-            class="min-none"
+          <div 
+            id="track-time"
+            class="min-none min-none3"
             style="
               font-size: 14.5px;
               margin-top: 1.4em;
               margin-left: 1em;
-              color: rgb(99, 99, 99);
-            "
-          >
+              color: rgb(99, 99, 99);"
+            >
             00:00
           </div>
         </div>
@@ -137,7 +128,7 @@
         </div>
 
         <div class="right-song-down">
-          <i class="fa-solid fa-volume-high icon-song"></i>
+          <i class="fa-solid fa-volume-high icon-song min-none2"></i>
           <i class="fa-solid fa-repeat icon-song min-none"></i>
           <i class="fa-solid fa-shuffle icon-song min-none"></i>
           <i style="color: white" class="fa-solid fa-caret-down icon-song"></i>
