@@ -13,6 +13,11 @@ body {
     filter: brightness(1.1);
 }
 
+.search-area:focus, 
+.search-area:focus-within {
+    border: 2px solid white;
+}
+
 .home-image:hover {
     filter: brightness(1.1); /* 호버 시 10% 더 밝아짐 */
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* 밝은 그림자 효과 추가 */
