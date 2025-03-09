@@ -53,10 +53,13 @@ body {
 }
 
 .song-bt button {
-  color: white;
-  border-radius: 15px;
+  margin-right: 0.4em;
   border: none;
-  background-color: rgb(65, 65, 65);
+  background-color: rgba(39, 39, 39, 0.781);
+  border-radius: 4px;
+  color: white;
+  margin-bottom: 0.4em;
+  padding-top: 5px;
 }
 
 .song-bt button:hover{
