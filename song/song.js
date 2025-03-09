@@ -10,8 +10,8 @@ const underLine = document.getElementById("under-line");
 const nextTab = document.getElementById("next-tab");
 
 const params = new URLSearchParams(window.location.search);
-const trackID = params.get("trackId");
-// const trackID = "1QV6tiMFM6fSOKOGLMHYYg"; 
+// const trackID = params.get("trackId");
+const trackID = "1QV6tiMFM6fSOKOGLMHYYg"; 
 
 window.addEventListener("load", async () => {
   requestAnimationFrame(() => moveUnderLine(nextTab)); // 언더라인 위치 설정
@@ -87,7 +87,6 @@ const fetchTrackInfo = async (trackID) => {
 const displayTrackDetail = (track) => {
   const songImgContainer = document.querySelector('.song-img');
   if (songImgContainer) {
-    
     songImgContainer.innerHTML = ''; 
     const imgElement = document.createElement('img'); 
     imgElement.src = track.album.images[0]?.url || "기본 이미지 URL"; 
@@ -103,11 +102,14 @@ const displayTrackDetail = (track) => {
       <div class="down_song_title">${track.name}</div>
       <div class="song-people">${track.artists.map(artist => artist.name).join(", ")}</div>
     </div>
+    <i class="fa-regular fa-thumbs-up icon-song min-none"></i>
+    <i class="fa-regular fa-thumbs-down icon-song min-none"></i>
+    <i class="fa-solid fa-ellipsis-vertical icon-song min-none2 "></i>
   `;
-
-  // 레이블 정보
-  const trackSourceDiv = document.getElementById("trackSource");
-  trackSourceDiv.textContent = track.album.label || "레이블 정보 없음";
+  
+  // 전체 시간 표시
+  const trackTimeElement = document.getElementById("track-time");
+  trackTimeElement.textContent = formatTrackDuration(track.duration_ms);
 };
 
 const fetchArtistTracks = async (artistID) => {
@@ -161,6 +163,7 @@ const appendTrackElement = (track, container, isFirstTrack = false) => {
       <div class="${isFirstTrack ? 'down_song_title' : 'artist_song_title'}" style="color: white; ${isFirstTrack ? '' : 'width:400px'}">${track.name}</div>
       <div style="font-size: ${isFirstTrack ? '14px' : '13.5px'};" class="song-people">${track.artists.map(artist => artist.name).join(", ")}</div>
     </div>
+    <div class="time-sit min-none4">${formatTrackDuration(track.duration_ms)}</div>
   `;
   container.appendChild(trackElement);
 };
@@ -196,4 +199,10 @@ const fetchLyrics = async (trackID) => {
     console.error("가사를 가져올 수 없습니다.", error);
     return "가사를 가져올 수 없습니다.";  
   }
+};
+
+const formatTrackDuration = (durationMs) => {
+  const minutes = Math.floor(durationMs / 60000); 
+  const seconds = ((durationMs % 60000) / 1000).toFixed(0);
+  return `${minutes}:${(seconds < 10 ? '0' : '') + seconds}`;
 };
