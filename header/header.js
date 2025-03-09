@@ -83,7 +83,7 @@ function fetchUserProfile(accessToken) {
   });
 }
 
-// 프로필 드롭다운 기능 초기화
+// 프로필 드롭다운 기능 초기화 - 수정된 부분
 function initProfileDropdown() {
   const profileButton = document.querySelector('.profile-button');
   const profileDropdown = document.getElementById('profileDropdown');
@@ -91,25 +91,38 @@ function initProfileDropdown() {
   if (profileButton && profileDropdown) {
     console.log('프로필 요소 찾음');
     
-    // 프로필 버튼 클릭 시 드롭다운 토글 (클래스 대신 직접 스타일 적용)
+    // 프로필 버튼 클릭 시 드롭다운 토글 (클래스와 인라인 스타일 모두 적용)
     profileButton.addEventListener('click', function(event) {
       event.stopPropagation(); // 이벤트 버블링 방지
       
       // 현재 상태에 따라 토글
       if (profileDropdown.style.display === 'block') {
         profileDropdown.style.display = 'none';
-        profileDropdown.classList.remove('active'); // 클래스도 함께 제거 (CSS 호환성)
+        profileDropdown.classList.remove('active');
         console.log('드롭다운 숨김');
       } else {
+        // 드롭다운 표시 전 추가 스타일 설정
         profileDropdown.style.display = 'block';
-        profileDropdown.classList.add('active'); // 클래스도 함께 추가 (CSS 호환성)
-        console.log('드롭다운 표시, 현재 스타일:', profileDropdown.style.display);
+        profileDropdown.style.zIndex = '10000';
+        profileDropdown.style.visibility = 'visible';
+        profileDropdown.style.pointerEvents = 'auto';
+        profileDropdown.classList.add('active');
+        
+        // 디버깅용: 드롭다운 메뉴의 스타일 확인
+        console.log('드롭다운 표시됨');
+        console.log('Current display style:', window.getComputedStyle(profileDropdown).display);
+        console.log('Current z-index:', window.getComputedStyle(profileDropdown).zIndex);
+        console.log('Current visibility:', window.getComputedStyle(profileDropdown).visibility);
+        console.log('Current position:', window.getComputedStyle(profileDropdown).position);
       }
     });
     
-    // 문서 내 다른 곳 클릭 시 드롭다운 닫기
+    // 문서 내 다른 곳 클릭 시 드롭다운 닫기 (클릭 영역 명확하게 정의)
     $(document).on('click', function(event) {
-      if (!profileButton.contains(event.target) && !profileDropdown.contains(event.target)) {
+      // 프로필 버튼이나 드롭다운 메뉴 외부를 클릭한 경우
+      if (profileDropdown.style.display === 'block' && 
+          !profileButton.contains(event.target) && 
+          !profileDropdown.contains(event.target)) {
         profileDropdown.style.display = 'none';
         profileDropdown.classList.remove('active');
       }
@@ -122,6 +135,19 @@ function initProfileDropdown() {
         profileDropdown.classList.remove('active');
       }
     });
+    
+    // 헤더가 로드된 후 프로필 컨테이너에 z-index 적용
+    const profileContainer = document.querySelector('.profile-container');
+    if (profileContainer) {
+      profileContainer.style.zIndex = '10000';
+      profileContainer.style.position = 'relative';
+    }
+    
+    // nav 요소에 z-index 적용
+    const navElement = document.querySelector('nav');
+    if (navElement) {
+      navElement.style.zIndex = '9990';
+    }
     
     console.log('프로필 드롭다운 기능 초기화 완료');
   } else {

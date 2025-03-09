@@ -31,6 +31,8 @@ nav {
     width: 100%;
     position: fixed;
     top: 0;
+    left: 0;
+    z-index: 9990; /* nav 요소에 높은 z-index 설정 */
     overflow: visible !important;
 }
 
@@ -183,9 +185,10 @@ nav {
     height: 24px;
 }
 
+/* 수정된 프로필 컨테이너 스타일 */
 .profile-container {
     position: relative;
-    z-index: 9999; /* 이 속성 추가 */
+    z-index: 10000; /* 컨테이너 자체에 높은 z-index 적용 */
 }
 
 .profile-button {
@@ -205,65 +208,63 @@ nav {
     height: 32px;
 }
 
-/* Dropdown styles - 수정됨 */
+/* 수정된 드롭다운 스타일 */
 .profile-dropdown {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 11px); /* 버튼 바로 아래에 위치 */
     right: 0;
     width: 240px;
     background-color: #282828;
     border-radius: 4px;
     box-shadow: 0 16px 24px rgba(0,0,0,0.3);
-    margin-top: 8px;
-    /* z-index: 1000; */
-    z-index: 9999; /* 이 값을 1000에서 9999로 증가 */
-    display: none; /* Hidden by default */
+    /* margin-top: 8px; */
+    z-index: 10000; /* 최상위 레이어 설정 */
+    display: none; /* 기본적으로 숨김 */
     max-height: 90vh; /* 화면 높이의 90%로 제한 */
     overflow-y: auto; /* 높이를 넘어가면 스크롤 */
+    visibility: visible !important; /* 가시성 강제 설정 */
+    pointer-events: auto !important; /* 클릭 이벤트 보장 */
 }
 
-/* active 클래스가 있을 때 보이도록 설정 */
+/* 활성화 클래스 스타일 더 강력하게 적용 */
 .profile-dropdown.active {
-    display: block !important; /* !important 추가로 우선순위 높임 */
+    display: block !important; /* !important로 우선순위 높임 */
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
-/* 디버깅용 스타일 */
-.debug-visible {
-    display: block !important;
-    border: 2px solid red;
-}
-
-  .dropdown-menu {
+/* 드롭다운 메뉴 내부 스타일 */
+.dropdown-menu {
     list-style: none;
     padding: 0;
     margin: 0;
-  }
+}
 
-  .dropdown-menu li {
+.dropdown-menu li {
     padding: 0;
-  }
+}
 
-  .dropdown-menu li a {
+.dropdown-menu li a {
     padding: 12px 16px;
     display: block;
     color: #FFFFFF;
     text-decoration: none;
     font-size: 14px;
     transition: background-color 0.2s;
-  }
+}
 
-  .dropdown-menu li a:hover {
+.dropdown-menu li a:hover {
     background-color: #333333;
     color: #FFFFFF;
-  }
+}
 
-  .dropdown-menu .divider {
+.dropdown-menu .divider {
     height: 1px;
     background-color: #3E3E3E;
     margin: 8px 0;
-  }
+}
 
-  /* 태블릿 크기를 위한 미디어 쿼리 (769px ~ 1024px) */
+/* 태블릿 크기를 위한 미디어 쿼리 (769px ~ 1024px) */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     /* 로고 및 네비게이션 조정 */
     nav {
@@ -344,9 +345,9 @@ nav {
       width: 28px;
       height: 28px;
     }
-  }
+}
 
-  @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     /* 앱 버튼 표시 */
     .app-button {
     background-color: #FFFFFF;
