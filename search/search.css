@@ -261,7 +261,7 @@ main {
 /* 화면 너비가 480px 이하(스마트폰)일 때 더 줄이기 */
 @media (max-width: 480px) {
   .popular {
-    padding: 3px; /* 작은 스마트폰에서는 더 작은 패딩 */
+    padding: 15px; /* 작은 스마트폰에서는 더 작은 패딩 */
   }
   .track-item {
     padding: 5px;
@@ -279,6 +279,9 @@ main {
 @media (min-width: 600px) {
   .item {
     flex: 0 0 calc(33.333% - 10px); /* 한 줄에 3개 */
+  }
+  .popular {
+    padding: 15px; /* 작은 스마트폰에서는 더 작은 패딩 */
   }
 }
 
