@@ -11,6 +11,7 @@ const nextTab = document.getElementById("next-tab");
 
 const params = new URLSearchParams(window.location.search);
 const trackID = params.get("trackId");
+// const trackID = "1QV6tiMFM6fSOKOGLMHYYg"; 
 
 window.addEventListener("load", async () => {
   requestAnimationFrame(() => moveUnderLine(nextTab)); // 언더라인 위치 설정
@@ -71,7 +72,8 @@ const fetchTrackInfo = async (trackID) => {
   const url = `https://api.spotify.com/v1/tracks/${trackID}`;
 
   const data = await fetchData(url, token);
-
+  console.log(data); 
+  
   if (data) {
     displayTrackDetail(data); 
     currentArtistID = data.artists[0].id; 
@@ -83,7 +85,16 @@ const fetchTrackInfo = async (trackID) => {
 };
 
 const displayTrackDetail = (track) => {
-  document.querySelector('.song-main-img').src = track.album.images[0]?.url || "기본 이미지 URL";
+  const songImgContainer = document.querySelector('.song-img');
+  if (songImgContainer) {
+    
+    songImgContainer.innerHTML = ''; 
+    const imgElement = document.createElement('img'); 
+    imgElement.src = track.album.images[0]?.url || "기본 이미지 URL"; 
+    imgElement.alt = track.name; 
+    songImgContainer.appendChild(imgElement);
+  }
+
   const DownContainer = document.getElementById("downbarSongTmi");
 
   DownContainer.innerHTML = `
@@ -93,6 +104,8 @@ const displayTrackDetail = (track) => {
       <div class="song-people">${track.artists.map(artist => artist.name).join(", ")}</div>
     </div>
   `;
+
+  // 레이블 정보
   const trackSourceDiv = document.getElementById("trackSource");
   trackSourceDiv.textContent = track.album.label || "레이블 정보 없음";
 };
@@ -123,17 +136,20 @@ const displayTracks = (tracks) => {
   const songListContainer = document.getElementById("song-list");
   songListContainer.innerHTML = "";
 
-  if (tracks.length > 0) {
-    const mainImgElement = document.querySelector(".song-main-img");
-    if (mainImgElement) {
-      mainImgElement.src = tracks[0].album.images[0].url;
+  if (currentTrackID) {
+    const currentTrack = tracks.find(track => track.id === currentTrackID);
+    if (currentTrack) {
+      appendTrackElement(currentTrack, songListContainer, true);  
     }
   }
 
   tracks.forEach((track, index) => {
-    appendTrackElement(track, songListContainer, index === 0);
+    if (track.id !== currentTrackID) {
+      appendTrackElement(track, songListContainer, index === 0);
+    }
   });
 };
+
 
 const appendTrackElement = (track, container, isFirstTrack = false) => {
   const trackElement = document.createElement("div");
