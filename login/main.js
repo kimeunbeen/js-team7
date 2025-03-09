@@ -11,7 +11,7 @@ const SCOPES = 'user-library-read user-top-read';
 
 const SIGN_UP_URL = `https://www.spotify.com/kr-ko/signup?flow_id=${encodeURIComponent(REDIRECT_URI)}&forward_url=${encodeURIComponent(`https://accounts.spotify.com/authorize?scope=${encodeURIComponent(SCOPES)}&response_type=token&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&client_id=${CLIENT_ID}`)}`;
 
-// Wait for DOM to be fully loaded before attaching event listeners
+//이벤트 리스너를 연결하기 전에 DOM이 완전히 로드될 때까지 기다림
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded - setting up event listeners");
 
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Login button
+  //Login button
   const loginBtn = document.getElementById('loginBtn');
   console.log("Login button found:", !!loginBtn);
   if (loginBtn) {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Free button
+  //Free button
   const freeBtn = document.getElementById('freeBtn');
   console.log("Free button found:", !!freeBtn);
   if (freeBtn) {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Hamburger menu
+  //Hamburger menu
   const hamburgerIcon = document.getElementById("hamburgerIcon");
   const navItems = document.querySelector(".nav-items");
   if (hamburgerIcon && navItems) {
@@ -55,11 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Check for access token on page load
+  //페이지 로드 시 액세스 토큰 확인
   checkAccessToken();
 });
 
-// Check for access token from URL hash
+//URL 해시에서 액세스 토큰 확인
 function checkAccessToken() {
   console.log("Checking for access token");
   const urlParams = new URLSearchParams(window.location.hash.substring(1));
@@ -86,7 +86,7 @@ function checkAccessToken() {
   }
 }
 
-// Fetch user profile information
+//사용자 프로필 정보 가져오기
 function fetchUserProfile(accessToken) {
   fetch('https://api.spotify.com/v1/me', {
     method: 'GET',

@@ -1,12 +1,13 @@
 .artist_body {
   font-family: "CircularSpotifyText", sans-serif, Helvetica, Arial;
-  background-color: black;
+  background-color:#121212;
   color: white;
   height: 100%;
   /* width: 100%; */
   margin-bottom: 20px;
   margin-right: 20px;
   margin-left: 20px;
+  padding: 64px;
 }
 
 .artist_part {
@@ -35,6 +36,10 @@
 .artist_name {
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.artist_name:hover{
+  cursor: pointer;
 }
 
 .artist_song {
@@ -140,7 +145,6 @@
 }
 
 nav {
-  height: 80px;
   background-color: black;
   display: flex;
   align-items: center;
@@ -150,4 +154,13 @@ nav {
 .nav-item {
   padding: 28px 17px;
   font-weight: 700;
+}
+
+.artist{
+  text-decoration: none !important;
+  color: white !important;
+}
+
+.artist:hover {
+  cursor: pointer;
 }
