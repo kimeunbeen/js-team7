@@ -3,6 +3,7 @@ body {
     /* font-family: spotify-circular, Helvetica, Arial, sans-serif; */
     font-family: 'CircularSpotifyText', sans-serif, Helvetica, Arial;
     color: white;
+    width: 100%;
 }
 
 .logo {
@@ -251,26 +252,269 @@ footer {
     font-size: 28px;
 }
 
-/* 모바일에서 햄버거 버튼과 메뉴를 조정 */
+
+/* Existing mobile styles enhanced */
 @media screen and (max-width: 768px) {
+    /* Navigation adjustments */
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+        height: 64px;
+        padding: 0 15px;
+        position: relative;
+    }
+
+    /* 햄버거 메뉴 클릭 시 nav-items 표시 - 원래 코드와 일치하도록 유지 */
     .nav-items {
-        display: none;  /* 기본적으로 숨김 */
+        display: none;
         flex-direction: column;
         width: 100%;
         align-items: center;
+        background-color: black;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        z-index: 100;
+        padding: 10px 0;
+    }
+
+    /* 이 클래스가 중요합니다 - 기존 JS 코드와 동작해야 함 */
+    .nav-items.show {
+        display: flex !important;
     }
 
     .nav-item {
-        padding: 10px 20px;
+        padding: 12px 20px;
         font-size: 16px;
+        width: 100%;
+        text-align: center;
     }
 
+    /* 햄버거 메뉴 클릭 시 nav-item 중 | 구분자만 제거 */
+    .nav-items.show span.nav-item {
+        display: none;
+    }
+
+    /* 햄버거 아이콘 스타일링 */
     .hamburger {
-        display: block;  /* 햄버거 아이콘 보이기 */
+        display: block !important;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 200; /* 다른 요소 위에 표시 */
     }
 
-    /* 햄버거 아이콘 클릭시 메뉴가 보이게 하기 */
-    .nav-items.show {
+    /* Main content adjustments */
+    main {
+        height: auto;
+        min-height: 500px; /* 모바일에서 최소 높이 보장 */
+        padding: 60px 20px;
+        background-position: 46% 0%;
+        background-size: 150%; /* 모바일에서 배경 이미지 크기 축소 */
+    }
+
+    .headline {
+        font-size: 50px; /* 모바일에서 글자 크기 감소 */
+        line-height: 60px;
+        padding-bottom: 30px;
+    }
+
+    .headline-first, .headline-second {
+        height: 60px;
+        margin-left: 0;
+        margin-right: 0;
+        align-self: center;
+    }
+
+    @keyframes typing-first {
+        from { width: 0; }
+        to { width: 8ch; }
+    }
+
+    @keyframes typing-second {
+        from { width: 0; opacity: 1; }
+        to { width: 7.8ch; opacity: 1; }
+    }
+
+    /* 모바일에서 sub-headline 제거 */
+    .sub-headline {
+        display: none;
+    }
+
+    /* Footer adjustments */
+    footer {
+        height: auto;
+    }
+
+    .container {
+        padding: 60px 20px 30px;
+    }
+
+    .footer-menu {
+        flex-direction: column;
+        height: auto;
+    }
+
+    /* first-box 완전히 제거 */
+    .first-box {
+        display: none;
+    }
+
+    /* second-box만 표시하고 스타일 조정 */
+    .second-box {
+        width: 100%;
         display: flex;
+        justify-content: center;
+        padding: 30px 0;
+    }
+
+    .icon-box {
+        width: 54px;
+        height: 54px;
+        margin: 0 15px;
+    }
+
+    /* 모바일에서 first-line 제거 */
+    .first-line {
+        display: none;
+    }
+
+    /* 모바일에서 second-line 제거 */
+    .second-line {
+        display: none;
+    }
+}
+
+/* Tablet styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Navigation adjustments */
+    nav {
+        padding: 0 20px;
+    }
+
+    .nav-items {
+        display: flex;
+    }
+
+    .nav-item {
+        padding: 28px 8px; /* 간격 감소 */
+        font-size: 14px; /* 글자 크기 감소 */
+    }
+
+    /* Main content adjustments */
+    main {
+        height: 650px; /* 웹보다 약간 줄임 */
+        background-position: 46% 0%;
+        background-size: 185%; /* 배경 크기 조정 */
+    }
+
+    .headline {
+        font-size: 90px; /* 글자 크기 줄임 */
+        line-height: 140px;
+    }
+
+    .headline-first, .headline-second {
+        height: 140px;
+    }
+
+    .headline-first {
+        margin-right: 15%;
+    }
+
+    .headline-second {
+        margin-left: 15%;
+    }
+
+    .sub-headline {
+        font-size: 14px; /* 글자 크기 줄임 */
+    }
+
+    .button-style {
+        padding: 12px 28px; /* 버튼 크기 줄임 */
+        font-size: 15px;
+    }
+
+    /* Footer adjustments */
+    footer {
+        height: auto;
+    }
+
+    .container {
+        padding: 60px 30px 30px;
+    }
+
+    .footer-menu {
+        height: auto;
+    }
+
+    .first-box {
+        width: 70%;
+    }
+
+    .first-box .column {
+        padding: 0 10px;
+    }
+
+    .footer-menu-item {
+        font-size: 14px; /* 글자 크기 줄임 */
+        padding-bottom: 12px;
+    }
+
+    .sub-title {
+        font-size: 13px;
+        margin: 15px 0;
+    }
+
+    .second-box {
+        width: 30%;
+    }
+
+    .icon-box {
+        width: 48px; /* 아이콘 크기 줄임 */
+        height: 48px;
+        margin-right: 10px;
+    }
+
+    .second-line-item {
+        margin-right: 12px;
+        font-size: 12px; /* 글자 크기 줄임 */
+    }
+}
+
+
+/* Small screen fixes */
+@media screen and (max-width: 480px) {
+    .headline {
+        font-size: 40px; /* 더 작은 화면에서는 더 작게 */
+        line-height: 50px;
+    }
+
+    .headline-first, .headline-second {
+        height: 50px;
+    }
+
+    main {
+        /*height: 650px; /* 웹보다 약간 줄임 */
+        background-position: 50% 70%;
+        background-size: 200%; /* 배경 크기 조정 */
+    }
+
+    .button-style {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .icon-box {
+        width: 40px;
+        height: 40px;
+        margin: 0 8px; /* 아이콘 간격 줄임 */
+    }
+
+    .icon {
+        font-size: 18px;
+    }
+    
+    /* 작은 화면에서 푸터 높이 보장 */
+    footer {
+        min-height: 200px;
     }
 }
