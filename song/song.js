@@ -156,18 +156,28 @@ function render() {
     fetchArtistTracks(currentArtistID);
   } else if (mode === '가사' && currentTrackID) {
     fetchLyrics(currentTrackID).then((lyrics) => {
-      songListContainer.innerHTML = `<div>${lyrics}</div>`;
+      songListContainer.innerHTML = `<div class="no-lyrics">${lyrics}</div>`;
     });
   } else if (mode === '관련 항목') {
     songListContainer.innerHTML = "<div>관련 항목이 없습니다.</div>";
   }
 }
 
-const genreButtons = document.querySelectorAll('.genre-button');
+const fetchLyrics = async (trackID) => {
+  const token = await getAccessToken();
+  const url = `https://api.lyrics.ovh/v1/${trackID}`;
 
-genreButtons.forEach((button) => {
-  button.addEventListener('click', async (event) => {
-    const genre = event.target.innerText.toLowerCase();
-    await fetchGenreTracks(genre);
-  });
-});
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.lyrics) {
+      return data.lyrics;
+    } else {
+      return "가사가 없습니다.";  
+    }
+  } catch (error) {
+    console.error("가사를 가져올 수 없습니다.", error);
+    return "가사를 가져올 수 없습니다.";  
+  }
+};
