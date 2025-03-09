@@ -1,18 +1,18 @@
-body {
-  font-family: "CircularSpotifyText", sans-serif, Helvetica, Arial;
+body{
+  font-family: 'CircularSpotifyText', sans-serif, Helvetica, Arial;
 }
+
 .main-pd {
   background-color: #121212;
   color: white;
-  /* font-family: Arial, sans-serif; */
   height: 100vh;
   padding: 10px 102px;
   text-align: center;
   overflow-x: hidden;
 }
 
-.popular-artists,
-.popular-albums {
+
+.popular-artists, .popular-albums {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -23,13 +23,12 @@ h2 {
   display: flex;
   justify-content: flex-start;
   font-size: 1.8em;
-  margin-top: 15px;
-  margin-bottom: 10px;
+  margin-top:15px;
+  margin-bottom: 10px
 }
 
 /* 가로 스크롤을 위한 스타일 */
-.artist-list,
-.album-list {
+.artist-list, .album-list {
   display: flex; /* 가로 정렬 유지 */
   flex-wrap: nowrap; /* 한 줄 유지 (슬라이드) */
   gap: 8px;
@@ -40,16 +39,16 @@ h2 {
   padding: 10px;
 }
 
+
+
 /* 스크롤바 숨기기 */
-.artist-list::-webkit-scrollbar,
-.album-list::-webkit-scrollbar {
+.artist-list::-webkit-scrollbar, .album-list::-webkit-scrollbar {
   display: none;
 }
 
 /* 개별 아이템 크기 고정 */
-.artist,
-.album {
-  flex: 0 0 calc(100% / 8);
+.artist, .album {
+  flex: 0 0 calc(100% / 8); 
   text-align: left;
   scroll-snap-align: start;
   display: flex;
@@ -58,7 +57,14 @@ h2 {
   align-items: flex-start;
 }
 
+
+a.artist-link {
+  color: inherit !important; /* 부모 요소의 색상을 따라가도록 설정 */
+  text-decoration: none !important; /* 밑줄 제거 */
+}
+
 .artist_name {
+  text-decoration-color: black;;
   font-size: 18px; /* 글자 크기 키우기 */
   font-weight: bold;
   color: white;
@@ -66,11 +72,11 @@ h2 {
   text-align: left;
 }
 
-.album_name {
+.album_name{
   font-size: 18px; /* 글자 크기 키우기 */
   font-weight: bold;
   color: white;
-  padding-top: 20px;
+  padding-top:20px;
   text-align: left;
 }
 
@@ -91,8 +97,8 @@ h2 {
 
 /* 앨범 이미지는 정사각형 */
 .album img {
-  width: 170px;
-  height: 170px;
+  width: 180px;
+  height: 180px;
   border-radius: 10px;
   object-fit: cover;
 }
@@ -106,14 +112,14 @@ h2 {
   text-align: left;
 }
 
+
+
 @media screen and (max-width: 1368px) {
   /* 오른쪽 카메라 아이콘 */
-  .artist,
-  .album {
+  .artist, .album {
     flex: 0 0 calc(100% / 5); /* 5개 보이게 설정 */
   }
-  .artist-list,
-  .album-list {
+  .artist-list, .album-list {
     justify-content: space-between;
   }
   .main-pd {
@@ -122,29 +128,28 @@ h2 {
 }
 
 @media screen and (max-width: 1181px) {
-  .artist,
-  .album {
-    flex: 0 0 calc(100% / 4);
+  .artist, .album {
+    flex: 0 0 calc(100% / 4); 
   }
-  .artist-list,
-  .album-list {
-    justify-content: space-between;
+  .artist-list, .album-list {
+    justify-content: space-between; 
   }
   .main-pd {
     padding: 20px;
   }
 }
 
+
 @media screen and (max-width: 430px) {
-  .artist,
-  .album {
+  .artist, .album {
     flex: 0 0 calc(100% / 2); /* 2개 보이게 설정 */
   }
-  .artist-list,
-  .album-list {
-    justify-content: space-between;
+  .artist-list, .album-list {
+    justify-content: space-between; 
   }
   .main-pd {
-    padding: 10px;
+    padding: 10px; 
   }
 }
+
+
