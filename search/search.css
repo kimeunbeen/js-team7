@@ -1,0 +1,293 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+  font-family: "CircularSpotifyText", sans-serif, Helvetica, Arial;
+  background-color: #121212;
+  color: white;
+  overflow-x: hidden;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+.header h1 {
+  font-size: 1.5rem;
+}
+
+#main-area {
+  height: 40vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin-top: 64px; /* nav높이로 고정*/
+
+  position: relative;
+
+  transition: filter 0.3s ease-out, transform 0.3s ease-out;
+  /* z-index: -1; */
+}
+
+.artist-Title-a {
+  display: inline-block; /* transform 적용을 위해 필요 */
+  text-decoration: none; /* 밑줄 제거 */
+  color: white;
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.artist-Title-a:hover {
+  cursor: pointer;
+  transform: scale(1.05); /* 10% 확대 */
+}
+
+/* 아티스트 정보 */
+#artist-info {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  font-size: 45px;
+  font-weight: bold;
+  transition: font-size 0.3s ease-out, top 0.3s ease-out;
+}
+
+/* 상단 고정 헤더 (스크롤 시 나타남) */
+.sticky-header {
+  position: fixed;
+  /* top: 50px; */
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: #c7c7c7;
+  color: white;
+  text-align: left;
+  padding: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+#sticky-header-info {
+  align-content: center;
+  justify-content: center;
+  /* align-items: center; */
+}
+.main-area-content {
+  background: none;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.main-play {
+  display: flex;
+  /* flex-direction: row; */
+  width: 100%;
+  height: 100px;
+  padding: 15px;
+  /* position: relative; 상대적 위치 지정 */
+}
+
+.play-btn img {
+  max-width: 100%; /* 부모 요소 크기에 맞춤 */
+  max-height: 100%; /* 부모 요소 크기에 맞춤 */
+  width: auto; /* 가로 비율 유지 */
+  height: auto; /* 세로 비율 유지 */
+  object-fit: contain; /* 원본 비율 유지하면서 div 내에서 크기 조절 */
+}
+main {
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.popular,
+.album,
+.featured {
+  padding: 15px;
+}
+.track-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.track-item {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #121212;
+}
+
+.track-item:hover {
+  background-color: #2a2a2a;
+}
+.track-cover img {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+}
+.track-info {
+  /* flex: 1; */
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+}
+.track-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #ffffff;
+}
+.track-title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.track-rank {
+  width: 20px;
+  text-align: right;
+  font-weight: bold;
+}
+.track-meta {
+  font-size: 15px;
+  color: #777;
+  position: absolute;
+  right: 100px;
+}
+
+.popular,
+.album,
+.featured {
+  margin-bottom: 40px;
+}
+#album-container,
+#featured-container {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  /* white-space: nowrap; */
+
+  padding: 10px 0;
+}
+#album-container .item,
+#featured-container .item {
+  /* display: inline-block;
+  width: 150px;
+  margin-right: 15px;
+  text-align: center; */
+  flex: 0 0 calc(50% - 10px); /* 기본적으로 한 줄에 2개씩 */
+  max-width: 150px;
+  scroll-snap-align: start;
+  text-align: left;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+#album-container .item:hover,
+#featured-container .item:hover {
+  background-color: #2a2a2a;
+}
+
+#album-container img,
+#featured-container img {
+  width: 100%;
+  height: 100%;
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 10px;
+}
+
+.play-button {
+  position: absolute;
+  bottom: 10px; /* 아래쪽 위치 조정 */
+  right: 5%; /* 오른쪽 위치 조정 */
+  width: 50px; /* 버튼 크기 */
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  opacity: 0; /* 처음에는 숨김 */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.play-button img {
+  width: 60%;
+  height: auto;
+}
+
+.album-card {
+  position: relative; /* 재생 버튼 위치를 조정하기 위해 relative 설정 */
+  display: inline-block;
+  overflow: hidden;
+}
+
+.album-card:hover .play-button {
+  opacity: 1; /* 마우스 오버 시 버튼 표시 */
+}
+
+@media (max-width: 768px) {
+  .popular {
+    padding: 8px;
+  }
+  .track-item {
+    padding: 5px;
+  }
+  .track-meta {
+    right: 50px;
+  }
+}
+
+/* 화면 너비가 480px 이하(스마트폰)일 때 더 줄이기 */
+@media (max-width: 480px) {
+  .popular {
+    padding: 15px; /* 작은 스마트폰에서는 더 작은 패딩 */
+  }
+  .track-item {
+    padding: 5px;
+  }
+  .track-meta {
+    display: none;
+  }
+
+  .artist-Title-a {
+    font-size: 25px;
+  }
+}
+
+/* 태블릿 크기 이상에서 3개 이상 보이도록 */
+@media (min-width: 600px) {
+  .item {
+    flex: 0 0 calc(33.333% - 10px); /* 한 줄에 3개 */
+  }
+  .popular {
+    padding: 15px; /* 작은 스마트폰에서는 더 작은 패딩 */
+  }
+}
+
+/* 데스크톱 크기 이상에서 4개 이상 보이도록 */
+@media (min-width: 900px) {
+  .item {
+    flex: 0 0 calc(25% - 10px); /* 한 줄에 4개 */
+  }
+}

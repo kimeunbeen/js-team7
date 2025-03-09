@@ -1,0 +1,15 @@
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.vscode/!!!.code-snippets
+!!!.vscode
+# Visual Studio Code의 로컬 기록
+.history/
+# Visual Studio Code 확장 프로그램 구축
+*.vsix
+### VisualStudioCode Patch ###
+# 파일의 모든 로컬 기록을 무시
+.history
+.ionide
