@@ -141,7 +141,7 @@ const searchArtistIncludeAlbums = async (artistID) => {
 // 렌더팅 (메인) 
 const renderMain = () => {
   const artistName = artistMain.name;
-  const artistHTML = `<div class="artist-Title"><a href="https://noonafy.netlify.app/artist/index.html?artistId=${artistID}">${artistName}</a></div>`;
+  const artistHTML = `<div class="artist-Title"><a class="artist-Title-a"href="https://noonafy.netlify.app/artist/index.html?artistId=${artistID}">${artistName}</a></div>`;
 
   document.getElementById("artist-info").innerHTML = artistHTML;
   document.getElementById("sticky-header-info").innerHTML = artistHTML;
