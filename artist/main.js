@@ -128,10 +128,10 @@ const searchArtistInfo = async (artistID) => {
         </div>
         <div class="artist_time">${formatTrackDuration(track.duration_ms)}</div>
       `;
-    
+
       container.appendChild(trackElement);
-      
-      
+
+
     });
   } else {
     console.error("아티스트의 트랙을 찾을 수 없습니다.");
@@ -226,6 +226,6 @@ const paramArtistID = params.get("artistId");
 
 // 초기화
 // searchArtistName("샤이니");
-searchArtistID("6eUKZXaKkcviH0Ku9w2n3V");
-// searchArtistID(paramArtistID);  // "G-Dragon"을 검색하여 아티스트 정보를 표시
+//searchArtistID("6eUKZXaKkcviH0Ku9w2n3V");
+searchArtistID(paramArtistID);  // "G-Dragon"을 검색하여 아티스트 정보를 표시
 /* API 연계 END */
