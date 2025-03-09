@@ -128,10 +128,10 @@ const searchArtistInfo = async (artistID) => {
         </div>
         <div class="artist_time">${formatTrackDuration(track.duration_ms)}</div>
       `;
-    
+
       container.appendChild(trackElement);
-      
-      
+
+
     });
   } else {
     console.error("아티스트의 트랙을 찾을 수 없습니다.");
