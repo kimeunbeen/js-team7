@@ -308,5 +308,5 @@ const paramArtistID = params.get("artistId");
 const type = params.get("type");
 
 // 내 API or Render 파라미터로 넣어주기
-searchArtistID(type, paramArtistID);
-//searchArtistID("name", "taylor swift");
+//searchArtistID(type, paramArtistID);
+searchArtistID("name", "taylor swift");
