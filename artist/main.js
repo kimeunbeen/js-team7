@@ -40,6 +40,12 @@ const searchArtistID = async (artistId) => {
     artistName = data.name;
 
     searchArtistName(artistName);
+
+    if (artistID && artistName) {
+      searchArtistName(artistName);
+    } else {
+      console.error("아티스트 정보를 찾을 수 없습니다.");
+    }
   } else {
     console.error("아티스트를 찾을 수 없습니다.");
   }
@@ -65,9 +71,16 @@ const searchArtistName = async (artistName) => {
   if (data && data.artists && data.artists.items && data.artists.items.length > 0) {
     const artistImage = data.artists.items[0].images[0]?.url || "기본 이미지 URL";
 
+    // 아티스트 이미지 및 이름 업데이트 (요소 존재 확인 후)
+    const artistImg = document.getElementById('artist_img');
+    const artistNameEl = document.getElementById('artist_name');
+
+    if (artistImg) artistImg.src = artistImage;
+    if (artistNameEl) artistNameEl.textContent = artistName;
+
     // 아티스트 이미지 및 이름 업데이트
-    document.getElementById('artist_img').src = artistImage;
-    document.getElementById('artist_name').textContent = artistName;
+    // document.getElementById('artist_img').src = artistImage;
+    // document.getElementById('artist_name').textContent = artistName;
 
     searchArtistInfo(artistID); // 아티스트 트랙 검색
     artistAlbumList(artistID); // 아티스트 앨범 검색
@@ -115,9 +128,7 @@ const searchArtistInfo = async (artistID) => {
         </div>
         <div class="artist_time">${formatTrackDuration(track.duration_ms)}</div>
       `;
-      `<a href="https://noonafy.netlify.app/search/search.html?type=id&artistId=${"artistId"}" class="artist_song_title">`
-      `<a href="https://noonafy.netlify.app/main/index.html?type=id&artistId=${"artistId"}" class="artist_song_title">`
-
+    
       container.appendChild(trackElement);
       
       
@@ -185,6 +196,32 @@ const artistAlbumList = async (artistID) => {
       hasMoreAlbums = false; // 더 이상 앨범이 없다면 종료
     }
   }
+};
+
+// 메인 페이지에서 아티스트 목록을 렌더링하는 함수
+const renderArtists = (artists) => {
+  const artistContainer = document.getElementById("artist-container");
+  if (!artistContainer) {
+    console.error("🎤 아티스트 컨테이너를 찾을 수 없음");
+    return;
+  }
+  artistContainer.innerHTML = artists.slice(0, 10).map(artist => `
+    <a href="https://noonafy.netlify.app/main/index.html?artistId=${artist.id}" class="artist-link">
+        <div class="artist flex-shrink-0">
+            <img class="artist_img" src="${artist.images.length ? artist.images[0].url : 'https://via.placeholder.com/100'}" 
+                alt="${artist.name}">
+            <p class="artist_name">${artist.name}</p>
+        </div>
+    </a>
+
+    <a href="https://noonafy.netlify.app/search/search.html?artistId=${artist.id}" class="artist-link">
+        <div class="artist flex-shrink-0">
+            <img class="artist_img" src="${artist.images.length ? artist.images[0].url : 'https://via.placeholder.com/100'}" 
+                alt="${artist.name}">
+            <p class="artist_name">${artist.name}</p>
+        </div>
+    </a>
+  `).join('');
 };
 
 // URL에서 Query String 가져오기
