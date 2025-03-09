@@ -10,8 +10,8 @@ const underLine = document.getElementById("under-line");
 const nextTab = document.getElementById("next-tab");
 
 const params = new URLSearchParams(window.location.search);
-const trackID = params.get("trackId");
-// const trackID = "1QV6tiMFM6fSOKOGLMHYYg"; 
+// const trackID = params.get("trackId");
+const trackID = "1QV6tiMFM6fSOKOGLMHYYg"; 
 
 window.addEventListener("load", async () => {
   requestAnimationFrame(() => moveUnderLine(nextTab)); // 언더라인 위치 설정
@@ -106,6 +106,10 @@ const displayTrackDetail = (track) => {
     <i class="fa-regular fa-thumbs-down icon-song min-none"></i>
     <i class="fa-solid fa-ellipsis-vertical icon-song min-none2 "></i>
   `;
+
+  const sourceContainer = document.getElementById("trackSource"); 
+  const label = track.album.label || "레이블 없음"; 
+  sourceContainer.innerHTML = `${label}`;
   
   // 전체 시간 표시
   const trackTimeElement = document.getElementById("track-time");
@@ -165,9 +169,8 @@ const appendTrackElement = (track, container, isFirstTrack = false) => {
     <div class="time-sit min-none4">${formatTrackDuration(track.duration_ms)}</div>
   `;
   
-  // 클릭 이벤트 추가
   trackElement.addEventListener("click", () => {
-    fetchTrackInfo(track.id);  // 클릭된 트랙 정보 로드
+    fetchTrackInfo(track.id);  
   });
 
   container.appendChild(trackElement);
