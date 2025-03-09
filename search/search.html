@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <script
+      src="https://kit.fontawesome.com/219d5a838e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../fonts/common.css" />
+    <!-- font css 폰트 가져오려면 이 코드 꼭 넣어야 합니다! -->
+    <link rel="stylesheet" href="../header/header.css" />
+    <!-- header css header 가져오려면 이 코드 꼭 넣어야 합니다! -->
+    <link rel="stylesheet" href="./search.css" />
+    <link rel="icon" href="/image/logo.png" />
+  </head>
+  <body>
+    <section class="container">
+      <div id="header-placeholder"></div>
+
+      <div class="sticky-header">
+        <div id="sticky-header-info">
+          <div></div>
+        </div>
+      </div>
+
+      <div id="main-area">
+        <div class="main-area-content"></div>
+        <div id="artist-info"></div>
+      </div>
+
+      <!-- <div class="main-play">
+        <div class="play-btn"><img src="img/play.png" /></div>
+      </div> -->
+      <section class="popular">
+        <h2>인기</h2>
+        <div id="track-list"></div>
+      </section>
+
+      <section class="album">
+        <h2>앨범</h2>
+        <div id="album-container"></div>
+      </section>
+
+      <section class="featured">
+        <h2>참여앨범</h2>
+        <div id="featured-container"></div>
+      </section>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery 라이브러리를 CDN에서 로드 -->
+    <script>
+      $(function () {
+        $("#header-placeholder").load("../header/header.html");
+      });
+    </script>
+    <!-- jQuery의 .load() 메서드를 사용하여 header.html 파일을 가져와 #header-placeholder 요소에 삽입 -->
+    <script src="../header/header.js"></script>
+    <!-- header js -->
+    <script src="./search.js"></script>
+  </body>
+</html>

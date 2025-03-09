@@ -3,7 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Spotify main page before logging in</title>
+    <script src="https://kit.fontawesome.com/fac7e60736.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../fonts/common.css">   <!-- font css가져오려면 이 코드 꼭 넣어야 합니다! -->
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="/image/logo.png">
   </head>
-  <body></body>
+  <body>
+    <nav>
+      <div>
+        <img src="/image/logo.png" class="logo" />
+      </div>
+
+      <div class="nav-items">
+        <a href="#" class="nav-item">Premium</a>
+        <a href="https://support.spotify.com/kr-ko/#_gl=1*cdmwqm*_gcl_au*MTY1MzQwNzgzMi4xNzQxMTczODY5" class="nav-item">Support</a>
+        <a href="https://www.spotify.com/kr-ko/download/windows/" class="nav-item">Download</a>
+        <span class="nav-item">|</span>
+        <a class="nav-item" id="signUpBtn">Sign up</a>
+        <a class="nav-item" id="loginBtn">Log in</a>
+        <script src="/login/main.js"></script>
+      </div>
+
+      <!-- 햄버거 메뉴 아이콘 -->
+      <div class="hamburger" id="hamburgerIcon">
+      <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+
+    <main>
+      <div class="main-container">
+        <div class="headline">
+          <div class="headline-first">Listening is</div>
+          <div class="headline-second">everything</div>
+        </div>
+        <div class="sub-headline">
+          Millions of songs and podcasts. No credit card needed.
+        </div>
+        <div class="button-area">
+          <button class="button-style" id="freeBtn">Get Spotify free</button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-menu">
+          <div class="first-box">
+            <div>
+              <img src="/image/logo.png" class="logo" />
+            </div>
+            <div class="column">
+              <div class="sub-title">COMPANY</div>
+              <a href="https://www.spotify.com/kr-ko/about-us/contact/" class="footer-menu-item">About</a>
+              <a href="https://www.lifeatspotify.com/" class="footer-menu-item">Jobs</a>
+              <a href="https://newsroom.spotify.com/" class="footer-menu-item">For the Record</a>
+            </div>
+            <div class="column">
+              <div class="sub-title">COMMUNITIES</div>
+              <a href="https://artists.spotify.com/home" class="footer-menu-item">For Artists</a>
+              <a href="https://developer.spotify.com/" class="footer-menu-item">Developers</a>
+              <a href="http://ads.spotify.com/en-US/" class="footer-menu-item">Advertising</a>
+              <a href="https://investors.spotify.com/home/default.aspx" class="footer-menu-item">Investors</a>
+              <a href="https://spotifyforvendors.com/" class="footer-menu-item">Vendors</a>
+            </div>
+            <div class="column">
+              <div class="sub-title">USEFUL LINKS</div>
+              <a href="https://support.spotify.com/kr-ko/" class="footer-menu-item">Support</a>
+              <a href="#" class="footer-menu-item">Web Player</a>
+              <a href="https://www.spotify.com/kr-ko/download/windows/" class="footer-menu-item">Free Mobile App</a>
+            </div>
+          </div>
+
+          <div class="second-box">
+            <div class="icon-box">
+              <a href="https://www.instagram.com/spotify" target="_blank">
+                <i class="fab fa-instagram icon"></i>
+              </a>
+            </div>
+            <div class="icon-box">
+              <a href="https://x.com/spotify" target="_blank">
+                <i class="fab fa-twitter icon"></i>
+              </a>
+            </div>
+            <div class="icon-box">
+              <a href="https://www.facebook.com/Spotify" target="_blank">
+                <i class="fab fa-facebook-f icon"></i>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+        <div class="first-line">
+          <i class="fas fa-globe-africa"></i>
+          USA
+        </div>
+        <div class="second-line">
+          <div>
+            <a href="https://www.spotify.com/kr-ko/legal/end-user-agreement/" class="second-line-item">Legal</a>
+            <a href="https://www.spotify.com/kr-ko/safetyandprivacy" class="second-line-item">Privacy Center</a>
+            <a href="https://www.spotify.com/kr-ko/legal/privacy-policy/" class="second-line-item">Privacy Policy</a>
+            <a href="https://www.spotify.com/kr-ko/legal/cookies-policy/" class="second-line-item">Cookies</a>
+            <a href="https://www.spotify.com/kr-ko/legal/privacy-policy/#s3" class="second-line-item">About Ads</a>
+            <a href="https://www.spotify.com/kr-ko/accessibility" class="second-line-item">Accessibility</a>
+          </div>
+          <div>&copy; 2021 Spotify AB</div>
+        </div>
+      </div>
+    </footer>
+
+
+    <script src="./main.js"></script>
+  </body>
 </html>
+
