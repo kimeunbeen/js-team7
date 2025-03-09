@@ -2,7 +2,6 @@
 const CLIENT_ID = "c8d711dc82634030b278a15c3fc61d2d";
 const CLIENT_SECRET = "10955bf5083b4c5c8fd51ddd71c2302f";
 
-
 let artistID = "";
 let artistName = "";
 
