@@ -7,6 +7,9 @@ function initHeaderJS() {
   
   // 모바일 검색 기능 초기화
   initMobileSearch();
+
+  // 검색 이벤트 리스너 초기화
+  initSearchFunctionality();
   
   console.log("헤더 JS 초기화 완료");
 }
@@ -126,6 +129,53 @@ function initProfileDropdown() {
     console.log('프로필 드롭다운 기능 초기화 완료');
   } else {
     console.error('프로필 버튼 또는 드롭다운 메뉴를 찾을 수 없습니다');
+  }
+}
+
+// 검색 기능 초기화 < 입력창 검색 코드는 이거 보시면 됩니다~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function initSearchFunctionality() {
+  const searchInput = document.querySelector('.search-input');
+  
+  if (searchInput) {
+    console.log('검색 입력 요소 찾음');
+    
+    // 검색 입력에 키 이벤트 리스너 추가
+    searchInput.addEventListener('keydown', function(event) {
+      // Enter 키를 누르면 검색 실행
+      if (event.key === 'Enter') {
+        event.preventDefault(); // 기본 동작 방지
+        
+        const searchQuery = searchInput.value.trim();
+        
+        if (searchQuery) {
+          console.log('검색 실행:', searchQuery);
+          
+          // 현재 페이지 그대로 유지하고 쿼리 파라미터만 추가/변경
+          const currentUrl = new URL(window.location.href);
+          currentUrl.searchParams.set('query', searchQuery);
+          window.location.href = currentUrl.toString();
+        } else {
+          console.log('검색어가 비어 있음, 검색을 실행하지 않음');
+          alert('검색어를 입력해주세요🙏');
+        }
+      }
+    });
+    
+    // 돋보기 아이콘 클릭으로도 검색 가능하게 추가
+    const magnifyingGlass = document.querySelector('.magnifying-glass-image');
+    if (magnifyingGlass) {
+      magnifyingGlass.addEventListener('click', function() {
+        // 검색창에 포커스만 줌
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+          searchInput.focus();
+        }
+      });
+    }
+    
+    console.log('검색 입력 이벤트 리스너 초기화 완료');
+  } else {
+    console.error('검색 입력 요소를 찾을 수 없습니다');
   }
 }
 
