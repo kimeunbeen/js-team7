@@ -116,8 +116,11 @@ const searchArtistInfo = async (artistID) => {
         <div class="artist_time">${formatTrackDuration(track.duration_ms)}</div>
       `;
       `<a href="https://noonafy.netlify.app/search/search.html?type=id&artistId=${"artistId"}" class="artist_song_title">`
-      
+      `<a href="https://noonafy.netlify.app/main/index.html?type=id&artistId=${"artistId"}" class="artist_song_title">`
+
       container.appendChild(trackElement);
+      
+      
     });
   } else {
     console.error("아티스트의 트랙을 찾을 수 없습니다.");
@@ -189,9 +192,8 @@ const params = new URLSearchParams(window.location.search);
 
 // 가져온param에서 artistId값 get
 const paramArtistID = params.get("artistId");
-const type = params.get("type");
 
 // 초기화
 //searchArtistName("샤이니");
-searchArtistID("artistId");  // "G-Dragon"을 검색하여 아티스트 정보를 표시
+searchArtistID(paramArtistID);  // "G-Dragon"을 검색하여 아티스트 정보를 표시
 /* API 연계 END */
