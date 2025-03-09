@@ -60,6 +60,7 @@ html, body {
 .song-bt button:hover{
     transform: scale(1.08);
     transition: all 0.2s ease;
+    background-color: rgb(107, 107, 107);
 }
 
 .song-img {
