@@ -152,11 +152,10 @@ const displayTracks = (tracks) => {
   });
 };
 
-
 const appendTrackElement = (track, container, isFirstTrack = false) => {
   const trackElement = document.createElement("div");
   trackElement.classList.add("song-item");
-
+  
   trackElement.innerHTML = `
     <img class="song-sm-img song-main-img" src="${track.album.images[0].url}" alt="${track.name}">
     <div class="song-tmi_space">
@@ -165,6 +164,12 @@ const appendTrackElement = (track, container, isFirstTrack = false) => {
     </div>
     <div class="time-sit min-none4">${formatTrackDuration(track.duration_ms)}</div>
   `;
+  
+  // 클릭 이벤트 추가
+  trackElement.addEventListener("click", () => {
+    fetchTrackInfo(track.id);  // 클릭된 트랙 정보 로드
+  });
+
   container.appendChild(trackElement);
 };
 
