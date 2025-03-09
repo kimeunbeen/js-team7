@@ -364,13 +364,6 @@ nav {
 @media screen and (max-width: 768px) {
     /* 앱 버튼 표시 */
     .app-button {
-    /* background-color: #FFFFFF;
-    border-radius: 500px;
-    display: flex;
-    align-items: center;
-    height: 30px;
-    width: 75px;
-    justify-content: center; */
     display: none;
     }
     
@@ -400,14 +393,14 @@ nav {
         background-color: #2a2a2a;
         border-radius: 500px; /* 캡슐 모양으로 변경 */
         padding: 0 12px;
-        width: 150px;
-        max-width: calc(100vw - 100px);
+        width: 250px;
+        max-width: calc(100vw - 80px);
         justify-content: flex-start; /* 왼쪽 정렬 */
     }
     
     .search-area.active .search-input {
         display: block;
-        width: 70%;
+        width: 85%;
     }
 
     /* 돋보기 아이콘은 항상 표시 */
