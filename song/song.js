@@ -95,7 +95,7 @@ const displayTrackDetail = (track) => {
     songImgContainer.appendChild(imgElement);
   }
 
-  const DownContainer = document.getElementById("downbarSongTmi");
+  const DownContainer = document.getElementById("downbarSongTmi");  
 
   DownContainer.innerHTML = `
     <img class="song-sm-img song-main-img" src="${track.album.images[0]?.url}" alt="${track.name}">
