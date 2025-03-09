@@ -184,6 +184,13 @@ const artistAlbumList = async (artistID) => {
   }
 };
 
+// URL에서 Query String 가져오기
+const params = new URLSearchParams(window.location.search);
+
+// 가져온param에서 artistId값 get
+const paramArtistID = params.get("artistId");
+const type = params.get("type");
+
 // 초기화
 //searchArtistName("샤이니");
 searchArtistID("artistId");  // "G-Dragon"을 검색하여 아티스트 정보를 표시
